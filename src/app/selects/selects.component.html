@@ -1,0 +1,26 @@
+<form class="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>TIA</mat-label>
+      <input matInput value="" required>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" align="center">
+      <mat-label>Comentário</mat-label>
+      <textarea matInput placeholder="Ex. Aluno atrasou..."></textarea>
+    </mat-form-field>
+</form>
+
+<mat-form-field class="select">
+  <mat-label></mat-label>
+  <mat-select>
+    <mat-option *ngFor="let mark of markers" [value]="mark.value">
+      {{mark.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <section>
+    <div class="example-button-row">
+      <button mat-raised-button>Salvar</button>
+    </div>
+  </section>
