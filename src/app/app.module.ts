@@ -14,6 +14,7 @@ import { SelectsComponent } from './selects/selects.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import { HttpClientModule } from '@angular/common/http'
  
 @NgModule({
   declarations: [
@@ -21,7 +22,6 @@ import {MatRadioModule} from '@angular/material/radio';
     HeaderComponent,
     HomeComponent,
     SelectsComponent
-
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

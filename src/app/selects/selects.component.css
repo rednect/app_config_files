@@ -17,13 +17,12 @@
     min-width: 500px;
     max-width: 1000px;
     width: 100%;
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 43%;
     width: 6em
   }
 
   .example-button-row{
     margin-right: auto;
     margin-left: auto;
-    width: 6em
+    width: 6em;
   }
