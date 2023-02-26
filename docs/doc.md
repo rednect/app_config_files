@@ -68,7 +68,28 @@
   </center></font>
 
 # Protótipos de tela
-*&lt;Protótipos de tela&gt;*
+  
+![login](https://github.com/rednect/app_config_files/blob/master/docs/prot%C3%B3tipo_login.png?raw=true)
+![home](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_home.png?raw=true)
+
+
+
+<font size="+12"><center>
+  Registrar Lista de Presença
+</center></font>
+
+![registrar1](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_registrar1.png?raw=true)
+![registrar2](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_registrar2.png?raw=true)
+![registrar3](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_registrar3.png?raw=true)
+
+
+<font size="+12"><center>
+  Consultar Lista de Presença
+</center></font>
+
+![consultar1](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_consultar1.png?raw=true)
+![consultar2](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_consultar2.png?raw=true)
+
 
 # Modelo de domínio
 
