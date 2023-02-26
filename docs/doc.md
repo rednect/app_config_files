@@ -18,9 +18,9 @@
 # Autores
 
 * Ana Giulia Gonçalves Tavares
+* Giovanna Catelli
 * Lucas Braga Borba
 * Pedro Cordeiro Franco
-* Giovanna Catelli
 
 # Descrição do projeto
 
@@ -42,10 +42,10 @@
   
   
   Interessados e Interesses:
-  - Professor: Deseja registrar a presença dos alunos no sistema;
+  - Professor: Deseja registrar ou consultar a lista de presença dos alunos no sistema;
   - Coordenador: Deseja consultar lista de presença registrada;
   
-  Pré-condições: O professor estará autenticado, com o objetivo de registrar as presenças de determinada aula.
+  Pré-condições: O professor/coordenador estará autenticado, com o objetivo de registrar ou consultar as presenças de determinada aula.
   
   
   Pós-condições: A lista de presença estará registrada no sistema, assim determinando frequência dos alunos nas aulas.
@@ -53,6 +53,7 @@
   
   Cenário de Sucesso Principal:
   1. Professor realiza o login no sistema;
+  2. Professor seleciona opção de registrar lista de presença no sistema;
   2. Professor seleciona nome de alunos presentes;
   3. Professor confirma alunos faltantes;
   4. Professor envia lista de presença ao sistema;
@@ -62,7 +63,8 @@
   
   Fluxos Alternativos:
   1. Credenciais do professor estão incorretas, impedindo-o de realizar o login no sistema.
-  5. Credenciais do professor estão incorretas, impedindo-o de realizar o login no sistema.
+  2. Professor seleciona opção de consultar lista de presença.
+  5. Credenciais do coordenador estão incorretas, impedindo-o de realizar o login no sistema.
   </center></font>
 
 # Protótipos de tela
