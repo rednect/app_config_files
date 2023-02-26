@@ -68,8 +68,9 @@
   </center></font>
 
 # Protótipos de tela
+
   
-![login](https://github.com/rednect/app_config_files/blob/master/docs/prot%C3%B3tipo_login.png?raw=true)
+![login](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_login.png?raw=true)
 ![home](https://github.com/rednect/app_config_files/blob/master/docs/prototipo_home.png?raw=true)
 
 
