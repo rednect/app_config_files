@@ -94,11 +94,11 @@
 
 # Modelo de domínio
 
-*&lt;Modelo de domínio&gt;*
+![Modelo de dominio](https://user-images.githubusercontent.com/89556525/221445799-88248780-de4e-41ad-ab42-a38c3ca1330f.png)
 
 # Decisões de arquitetura
 
-*&lt;Decisões de arquitetura&gt;*
+![Arquitetura](https://user-images.githubusercontent.com/89556525/221445817-49783803-7ce9-4b49-a6ff-f1ea35f0ce99.png)
 
 # Diagrama de implantação
 
