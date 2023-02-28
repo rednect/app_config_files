@@ -10,7 +10,7 @@ import { Aluno } from '../models/aluno';
 })
 export class AlunoService {
 
-  url = 'http://localhost:3000/aluno'; // api rest fake
+  url = 'http://localhost:3000/alunos'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -38,8 +38,8 @@ export class AlunoService {
   }
 
   // salva um aluno
-  saveAluno(car: Aluno): Observable<Aluno> {
-    return this.httpClient.post<Aluno>(this.url, JSON.stringify(car), this.httpOptions)
+  saveAluno(aluno: Aluno): Observable<Aluno> {
+    return this.httpClient.post<Aluno>(this.url, JSON.stringify(aluno), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

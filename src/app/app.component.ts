@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
 
   aluno = {} as Aluno;
-  alunos: Aluno[];
+  alunos: Aluno[] = [];
 
   constructor(private alunoService: AlunoService) {}
   
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.getAlunos();
   }
 
-  // defini se um carro será criado ou atualizado
+  // defini se um aluno será criado ou atualizado
   saveAluno(form: NgForm) {
     if (this.aluno.id !== undefined) {
       this.alunoService.updateAluno(this.aluno).subscribe(() => {
@@ -33,21 +33,21 @@ export class AppComponent implements OnInit {
     }
   }
 
-  // Chama o serviço para obtém todos os carros
+  // Chama o serviço para obtém todos os alunos
   getAlunos() {
     this.alunoService.getAlunos().subscribe((alunos: Aluno[]) => {
       this.alunos = alunos;
     });
   }
 
-  // deleta um carro
+  // deleta um aluno
   deleteAluno(aluno: Aluno) {
     this.alunoService.deleteAluno(aluno).subscribe(() => {
       this.getAlunos();
     });
   }
 
-  // copia o carro para ser editado.
+  // copia o aluno para ser editado.
   editAluno(aluno: Aluno) {
     this.aluno = { ...aluno };
   }
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
   cleanForm(form: NgForm) {
     this.getAlunos();
     form.resetForm();
-    aluno = {} as Aluno;
+    this.aluno = {} as Aluno;
   }
 
 }
