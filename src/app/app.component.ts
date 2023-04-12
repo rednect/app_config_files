@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { AlunoService } from './services/aluno.service';
-import { Aluno } from './models/aluno';
+import { Aluno } from './services/models/aluno';
 import { NgForm } from '@angular/forms';
 
 @Component({
