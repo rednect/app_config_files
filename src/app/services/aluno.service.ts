@@ -10,7 +10,7 @@ import { Aluno } from '../models/aluno';
 })
 export class AlunoService {
 
-  url = 'http://localhost:3000/alunos'; // api rest fake
+  url = 'app-config-files.vercel.app/'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -46,7 +46,7 @@ export class AlunoService {
       )
   }
 
-  // utualiza um carro
+  // atualiza um aluno
   updateAluno(aluno: Aluno): Observable<Aluno> {
     return this.httpClient.put<Aluno>(this.url + '/' + aluno.id, JSON.stringify(aluno), this.httpOptions)
       .pipe(
@@ -55,7 +55,7 @@ export class AlunoService {
       )
   }
 
-  // deleta um carro
+  // deleta um aluno
   deleteAluno(aluno: Aluno) {
     return this.httpClient.delete<Aluno>(this.url + '/' + aluno.id, this.httpOptions)
       .pipe(
