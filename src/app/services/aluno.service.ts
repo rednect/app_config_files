@@ -10,7 +10,7 @@ import { Aluno } from '../models/aluno';
 })
 export class AlunoService {
 
-  url = 'http://localhost:3000/alunos'; // api rest fake
+  url = 'app-config-files.vercel.app/'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
