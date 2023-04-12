@@ -10,7 +10,7 @@ import { Aluno } from '../models/aluno';
 })
 export class AlunoService {
 
-  url = 'https://railway.app/project/e6bb5fc3-a733-42e1-8d15-8b08b437d3cb/service/bbaed6e5-6d13-4799-9cb2-1e20fce35ebd?id=acaf6b92-8437-48c1-a507-8f7eda6bba96'; // api rest fake
+  url = 'http://localhost:3000/alunos'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
