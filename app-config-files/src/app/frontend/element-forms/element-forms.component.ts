@@ -17,7 +17,7 @@ export class ElementFormsComponent {
   ) {}
 
 
-  onNoClick(): void {
+  onCancel(): void {
     this.dialogRef.close();
   }
 }
