@@ -35,7 +35,25 @@
 # Descrição dos casos de uso
 
 <font size="+12"><center>
-  Caso de Uso: Registrar Lista de Presença;
+  CASO DE USO: Realizar Login
+  
+  Ator Principal: Professor;
+  
+  Interessados e Interesses:
+  - Professor: Deseja ingressar no sistema por meio de suas credenciais para registrar/consultar a presença dos alunos;
+  - Coordenador: Deseja ingressar no sistema por meio de suas credenciais para consultar a presença dos alunos;
+  
+  
+  Cenário de Sucesso Principal: 
+  1. Professor acessa página web de Login do Sistema por meio de uma URL;
+  2. Professor insere credenciais com TIA e senha;
+  3. Autenticação realizada com sucesso e professor será direcionado a outra página web;
+  4. Coordenador página web de Login do Sistema por meio de uma URL;
+  5. Coordenador insere credenciais com TIA e senha;
+  6. Autenticação realizada com sucesso e coordenador será direcionado a outra página web;
+  
+  
+  CASO DE USO: Registrar Lista de Presença;
   
   
   Ator Principal: Professor;
@@ -44,11 +62,6 @@
   Interessados e Interesses:
   - Professor: Deseja registrar ou consultar a lista de presença dos alunos no sistema;
   - Coordenador: Deseja consultar lista de presença registrada;
-  
-  Pré-condições: O professor/coordenador estará autenticado, com o objetivo de registrar ou consultar as presenças de determinada aula.
-  
-  
-  Pós-condições: A lista de presença estará registrada no sistema, assim determinando frequência dos alunos nas aulas.
   
   
   Cenário de Sucesso Principal:
@@ -61,10 +74,6 @@
   6. Coordenador consulta lista de presença.
   
   
-  Fluxos Alternativos:
-  1. Credenciais do professor estão incorretas, impedindo-o de realizar o login no sistema.
-  2. Professor seleciona opção de consultar lista de presença.
-  5. Credenciais do coordenador estão incorretas, impedindo-o de realizar o login no sistema.
   </center></font>
 
 # Protótipos de tela
