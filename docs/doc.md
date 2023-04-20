@@ -25,7 +25,7 @@
 # Descrição do projeto
 
 <font size="+12"><center>
-  O Projeto tem como objetivo a criação de um software que registra a presença de alunos para o colégio X. O software será desenvolvido com a linguagem de programação Angular CLI versão 15.1.4, afim de elaborar um sistema que atenda todas as necessidades dos Professores e Colaboradores do Colégio X.
+  O Projeto tem como objetivo a criação de um software que registra a presença de alunos para o colégio X, a fim de otimizar todo o processo de registro de presença da escola e facilitar o processo para os usuários.
 </center></font>
 
 # Diagrama de casos de uso
