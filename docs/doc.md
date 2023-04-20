@@ -30,7 +30,7 @@
 
 # Diagrama de casos de uso
 
-![Diagrama de Casos de Uso](https://github.com/rednect/app_config_files/blob/master/docs/diagrama_casos_de_uso.png?raw=true)
+![Diagrama de Casos de Uso](https://github.com/rednect/app_config_files/blob/master/docs/diagrama_casos_de_uso_2.0.png?raw=true)
 
 # Descrição dos casos de uso
 
