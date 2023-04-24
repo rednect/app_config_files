@@ -135,7 +135,7 @@
 
 # Diagrama de implantação
 
-*&lt;Diagrama de implantação&gt;*
+![Diagrama de Implantação](https://github.com/rednect/app_config_files/blob/master/docs/Diagrama%20de%20Implanta%C3%A7%C3%A3o.png?raw=true)
 
 # Referências
 
