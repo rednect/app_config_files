@@ -53,7 +53,9 @@
   6. Autenticação realizada com sucesso e coordenador será direcionado a outra página web;
   
   
-  CASO DE USO: Registrar Lista de Presença;
+  
+  
+  CASO DE USO: Registrar Lista de Presença
   
   
   Ator Principal: Professor;
@@ -61,18 +63,35 @@
   
   Interessados e Interesses:
   - Professor: Deseja registrar ou consultar a lista de presença dos alunos no sistema;
-  - Coordenador: Deseja consultar lista de presença registrada;
   
   
   Cenário de Sucesso Principal:
   1. Professor realiza o login no sistema;
   2. Professor seleciona opção de registrar lista de presença no sistema;
-  2. Professor seleciona nome de alunos presentes;
-  3. Professor confirma alunos faltantes;
-  4. Professor envia lista de presença ao sistema;
-  5. Coordenador realiza login no sistema;
-  6. Coordenador consulta lista de presença.
+  3 Professor seleciona nome de alunos presentes;
   
+  
+  CASO DE USO: Enviar Lista de Presença
+  
+  
+  Ator Principal: Professor;
+  
+  
+  Cenário de Sucesso Principal:
+  1. Professor visualiza alunos faltantes selecionados;
+  2. Professor confirma seleção de alunos faltantes;
+  3. Professor faz envio de lista de presença no sistema. 
+  
+  
+  CASO DE USO: Consultar Lista de Presença
+  
+  Ator Principal: Coordenador;
+  
+  Cenário de Sucesso Principal:
+  1. Coordenador seleciona turma e data que deseja consultar a lista de presença;
+  2. Coordenador é direcionado à Lista de Presença para consulta;
+  3. Professor seleciona turma e data que deseja consultar a lista de presença;
+  4. Professor é direcionado à Lista de Presença para consulta.
   
   </center></font>
 
@@ -107,7 +126,12 @@
 
 # Decisões de arquitetura
 
-![Arquitetura](https://user-images.githubusercontent.com/89556525/221445817-49783803-7ce9-4b49-a6ff-f1ea35f0ce99.png)
+<font size="+12"><center>
+  O Projeto será desenvolvido na linguagem de programação Angular CLI 13.
+  
+  O Banco de dados será desenvolvido e gerenciado por meio do sistema PostgreSQL. 
+  
+</center></font>
 
 # Diagrama de implantação
 
