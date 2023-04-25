@@ -1,13 +1,13 @@
-import { AdminsController } from './admins/admins.controller';
-import { AuthModule } from './auth/auth.module';
-import { elephantconfig } from './elephant.confg';
+import { TypeOrmModule } from "@nestjs/typeorm";
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersController } from './teachers/users.controller';
-import { UsersModule } from './teachers/users.module';
-import { AdminsModule } from './admins/admins.module';
+import { elephantconfig } from "./configs/elephant.config";
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { ProfessorsModule } from './professors/professors.module';
+import { PresencesModule } from './presences/presences.module';
+import { StudentsModule } from './students/students.module';
 
 @Module({
 
@@ -18,9 +18,9 @@ import { AdminsModule } from './admins/admins.module';
     synchronize: elephantconfig.synchronize,
     logging: elephantconfig.logging,
     entities: elephantconfig.entities,
-  }), UsersModule, AuthModule, AdminsModule],
+  }), UsersModule, AuthModule, ProfessorsModule, PresencesModule, StudentsModule],
 
-  controllers: [AppController, UsersController, AdminsController],
+  controllers: [AppController],
 
   providers: [AppService],
 
