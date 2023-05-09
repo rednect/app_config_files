@@ -13,7 +13,6 @@ import { StudentsModule } from './students/students.module';
 
   imports: [TypeOrmModule.forRoot({
     name: elephantconfig.name,
-    type: elephantconfig.type,
     url: elephantconfig.url,
     synchronize: elephantconfig.synchronize,
     logging: elephantconfig.logging,

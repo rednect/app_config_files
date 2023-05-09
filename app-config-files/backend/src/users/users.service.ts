@@ -1,14 +1,11 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Users } from './entities/users.entity';
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, DeepPartial } from "typeorm";
 import { IUsers, LoginReturn } from './dto/user.dto';
 import { AuthService } from 'src/auth/auth.service';
 import { hashSync } from "bcrypt";
+
 @Injectable()
 export class UsersService {
   constructor(

@@ -1,9 +1,4 @@
-import { 
-  IUsers, 
-  LoginReturn, 
-  LogoutReturn, 
-  UserLogin 
-} from './dto/user.dto';
+import { IUsers, LoginReturn, LogoutReturn, UserLogin } from './dto/user.dto';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthService } from 'src/auth/auth.service';
