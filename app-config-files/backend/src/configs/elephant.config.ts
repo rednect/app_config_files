@@ -6,7 +6,8 @@ export const elephantconfig = {
     "name": "default",
     "type": "postgres",
     "url": "postgres://qopxrqms:m7QHznAwLBaWVRKpwYLrCwz-FZLDlhtN@babar.db.elephantsql.com/qopxrqms", 
-    "synchronize": false,
+    "synchronize": true,
     "logging": true,
-    "entities": ["src/entity/*.*"]
-  }
+    "entities": ["src/entity/*.*"],
+    "migrations": ["src/migrations/**/*.ts"],
+  } 

@@ -13,6 +13,7 @@ import { StudentsModule } from './students/students.module';
 
   imports: [TypeOrmModule.forRoot({
     name: elephantconfig.name,
+    type: "postgres",
     url: elephantconfig.url,
     synchronize: elephantconfig.synchronize,
     logging: elephantconfig.logging,
