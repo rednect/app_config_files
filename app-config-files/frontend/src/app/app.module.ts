@@ -15,11 +15,15 @@ import { ElementFormsComponent } from './frontend/element-forms/element-forms.co
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { addAlunoComponent } from './frontend/addAluno/addAluno.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    addAlunoComponent,
     HeaderComponent,
     ElementFormsComponent
   ],
@@ -34,7 +38,9 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

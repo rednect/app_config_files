@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { AlunoElement } from '../home/home.component';
+import { AlunoElement } from 'src/app/backend/model/alunoElement';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({

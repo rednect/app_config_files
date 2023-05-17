@@ -1,5 +1,4 @@
 export interface AlunoElement {
     nome: string;
-    position: number;
-    id: number;
-}
+    tia: string;
+  }
