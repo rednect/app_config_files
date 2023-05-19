@@ -1,0 +1,24 @@
+<button mat-button routerLink="/menu" color="primary">Voltar</button>
+<div class="example-action-buttons">
+
+</div>
+<mat-accordion class="example-headers-align" multi>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Data da aula
+      </mat-panel-title>
+      <mat-panel-description>
+        Informe a data da aula
+        <mat-icon>date_range</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-expansion-panel>
+</mat-accordion>

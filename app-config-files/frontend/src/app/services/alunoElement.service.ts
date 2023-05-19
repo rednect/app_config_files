@@ -5,10 +5,10 @@ import { AlunoElement } from '../backend/model/alunoElement';
 
 @Injectable()
 export class AlunoElementService {
-    elementApiUrl = '../../../../backend';
+    elementApiUrl = 'http://localhost:3000';
     constructor(private http: HttpClient) { }
 
     getAlunos(): Observable<AlunoElement[]> {
-        return this.http.get<AlunoElement[]>(this.elementApiUrl);
+        return this.http.get<AlunoElement[]>(`${this.elementApiUrl}/students`);
     }
 }

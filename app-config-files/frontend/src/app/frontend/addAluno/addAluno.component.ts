@@ -23,7 +23,7 @@ export class addAlunoComponent {
   @ViewChild(MatTable)
   table!: MatTable<any>
   displayedColumns: string[] = ['nome', 'tia', 'acoes'];
-  dataSource!: AlunoElement[];
+  dataSource: AlunoElement[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -34,6 +34,8 @@ export class addAlunoComponent {
           this.dataSource = data;
         });
     }
+
+
 
   ngOnInit(): void {
   }

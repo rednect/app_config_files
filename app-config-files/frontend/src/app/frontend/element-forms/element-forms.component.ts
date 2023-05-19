@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { AlunoElement } from 'src/app/backend/model/alunoElement';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { addAlunoComponent } from '../addAluno/addAluno.component';
 
 @Component({
   selector: 'app-element-forms',
@@ -8,8 +9,8 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
   styleUrls: ['./element-forms.component.scss']
 })
 export class ElementFormsComponent {
-  element!: AlunoElement;
 
+  element!: AlunoElement;
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: AlunoElement,

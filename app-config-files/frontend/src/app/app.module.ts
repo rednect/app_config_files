@@ -18,6 +18,13 @@ import {MatInputModule} from '@angular/material/input';
 import { addAlunoComponent } from './frontend/addAluno/addAluno.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { ViewTurmasComponent } from './frontend/view-turmas/view-turmas.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     addAlunoComponent,
     HeaderComponent,
-    ElementFormsComponent
+    ElementFormsComponent,
+    ViewTurmasComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatInputModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule,
+    MatListModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
