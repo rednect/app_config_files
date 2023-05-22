@@ -1,48 +1,47 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Calling } from './entities/calling.entity';
-import { DeepPartial, Repository } from 'typeorm';
 import { Student } from './entities/student.entity';
-import { CreateStudent, StudentReturn } from './dto/student.dto';
-import { StudentDetails } from './entities/student_details.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { DeepPartial, Repository } from 'typeorm';
+import { HttpException, HttpStatus, Injectable, Body } from '@nestjs/common';
+import { where } from 'sequelize/dist';
 
 @Injectable()
 export class StudentsService {
+
   constructor(
-    @InjectRepository(Calling)
-    private readonly callingRepository: Repository<Calling>,
-
     @InjectRepository(Student)
-    private readonly studentsRepository: Repository<Student>,
-
-    @InjectRepository(StudentDetails)
-    private readonly studentsDetailsRepository: Repository<StudentDetails>,
+    private studentsRepository: Repository<Student>,
   ) { }
 
-  async getAll(): Promise<StudentReturn[]> {
-    let students: StudentReturn[] | any = await this.studentsRepository.find({
-      relations: ['student_details', 'presences']
-    });
-
-    if (students.length) return students;
-
-    throw new HttpException({
-      msg: "No User was Found",
-      error: "Not Found"
-    }, HttpStatus.NOT_FOUND);
+  async findAll(): Promise<Student[]> {
+    let students = await this.studentsRepository.find({relations: []});
+    return students
   }
 
-  async create(body: CreateStudent) {
-
-    let studentDetails = await this.studentsDetailsRepository.save(
-      this.studentsDetailsRepository.create(body as DeepPartial<StudentDetails>)
-    );
-    let student = await this.studentsRepository.save(
-      this.studentsRepository.create(body as DeepPartial<Student>)
-    );
-
-    student.student_details = studentDetails;
-
-    return await this.studentsRepository.save(student);
+  async create(tia: string, body: any) {
+    let students = await this.studentsRepository.findOne({where: {tia: body.tia}});
+    if (!students) {
+      throw new HttpException('Aluno já cadastrado', 406)
+    } else {
+      await this.studentsRepository.save(this.studentsRepository.create(body as DeepPartial<Student>));
+    }
   }
+
+  async findOne(id: number): Promise<Student> {
+    let students = await this.studentsRepository.findOne({where: {id: id}, relations: []});
+    return students;
+  }
+
+  async update(userId:number, body:any) {
+    let students = await this.studentsRepository.findOne({where: {id: userId}, relations:[]});
+    if (students) {
+      students = body
+      return this.studentsRepository.save(students);
+    }
+  }
+
+    async remove(userId: number) {
+      let students = await this.studentsRepository.findOne({where: {id: userId}, relations: []});
+      return this.studentsRepository.delete(userId)
+    }
+
 }

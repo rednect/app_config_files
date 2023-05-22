@@ -1,25 +1,18 @@
-import { Presence } from "src/presences/entities/presence.entity";
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany
-} from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity("Professores")
 export class Professor {
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  nomeProfessor: string;
+  nome_professor: string;
 
   @Column()
-  email: string;
+  sobrenome_professor: string;
 
-  @OneToMany(() => Presence, presence => presence.professor, {
-    cascade: ['insert', 'update']
-  })
-  presences?: Presence[]
+  @Column()
+  tia: string;
+
 }

@@ -1,47 +1,47 @@
-import { DeepPartial } from 'typeorm';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Body } from '@nestjs/common';
 import { Professor } from './entities/professor.entity';
-import { CreateProfessor } from './dto/professor.dto';
+import { where } from 'sequelize/dist';
 
 @Injectable()
 export class ProfessorsService {
 
   constructor(
     @InjectRepository(Professor)
-    private readonly professorRepository: Repository<Professor>
+    private professorRepository: Repository<Professor>,
   ) {}
   
-  async getAll() {
-    let professors = await this.professorRepository.find();
-
-    if(professors.length) return professors;
-
-    throw new HttpException({
-      msg: "No professor was found",
-      error: "Not Found"
-    }, HttpStatus.NOT_FOUND);
+  async findAll(): Promise<Professor[]> {
+    let professors = await this.professorRepository.find({relations: []});
+    return professors
   }
 
-  async create(body: CreateProfessor) {
-    const { email } = body;
-
-    let professor = await this.professorRepository.findOne({
-      where: {
-        email: email
-      }
-    });
-
-    if(!professor) {
-      return await this.professorRepository.save(
-        this.professorRepository.create(body as DeepPartial<Professor>)
-      );
+  async create(tia: string, body: any) {
+    let professors = await this.professorRepository.findOne({where: {tia: body.tia}});
+    if (!professors) {
+      throw new HttpException('Professor já cadastrado', 406)
+    } else {
+      await this.professorRepository.save(this.professorRepository.create(body as DeepPartial<Professor>));
     }
-
-    throw new HttpException({
-      msg: "Professor already exists",
-      error: "Not acceptable"
-    }, HttpStatus.NOT_ACCEPTABLE);
   }
+
+  async findOne(id: number): Promise<Professor> {
+    let professors = await this.professorRepository.findOne({where: {id: id}, relations: []});
+    return professors;
+  }
+
+  async update(userId:number, body:any) {
+    let professors = await this.professorRepository.findOne({where: {id: userId}, relations:[]});
+    if (professors) {
+      professors = body
+      return this.professorRepository.save(professors);
+    }
+  }
+
+    async remove(userId: number) {
+      let professors = await this.professorRepository.findOne({where: {id: userId}, relations: []});
+      return this.professorRepository.delete(userId)
+    }
+    
 }
