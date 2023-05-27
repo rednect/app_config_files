@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Turma } from "src/presences/entities/turmas.entity";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 
 @Entity('Alunos')
 export class Student {
@@ -14,5 +15,8 @@ export class Student {
 
   @Column()
   tia: string;
+
+  @ManyToOne(() => Turma, (turma) => turma.student)
+  turma: Turma;
 
 }

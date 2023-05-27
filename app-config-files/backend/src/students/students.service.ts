@@ -1,8 +1,7 @@
 import { Student } from './entities/student.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
-import { HttpException, HttpStatus, Injectable, Body } from '@nestjs/common';
-import { where } from 'sequelize/dist';
+import { HttpException, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class StudentsService {
@@ -19,10 +18,10 @@ export class StudentsService {
 
   async create(tia: string, body: any) {
     let students = await this.studentsRepository.findOne({where: {tia: body.tia}});
-    if (!students) {
-      throw new HttpException('Aluno já cadastrado', 406)
-    } else {
+    if (students) {
       await this.studentsRepository.save(this.studentsRepository.create(body as DeepPartial<Student>));
+    } else {
+      throw new HttpException('Aluno já cadastrado', 406)
     }
   }
 

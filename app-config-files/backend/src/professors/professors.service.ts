@@ -2,7 +2,6 @@ import { DeepPartial, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HttpException, HttpStatus, Injectable, Body } from '@nestjs/common';
 import { Professor } from './entities/professor.entity';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class ProfessorsService {
