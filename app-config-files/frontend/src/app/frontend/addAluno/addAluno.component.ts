@@ -9,8 +9,8 @@ import { AlunoElementService } from 'src/app/services/alunoElement.service';
 
 
 const ELEMENT_DATA: AlunoElement[] = [
-  {nome: 'Lucas', tia: '32129610'},
-  {nome: 'Pedro', tia: '32029401'}
+  {nome: 'Lucas', tia: '32129610', turma: '5J'},
+  {nome: 'Pedro', tia: '32029401', turma: '4J'}
 ];
 
 @Component({
@@ -22,7 +22,7 @@ const ELEMENT_DATA: AlunoElement[] = [
 export class addAlunoComponent {
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['nome', 'tia', 'acoes'];
+  displayedColumns: string[] = ['nome', 'tia', 'turma', 'acoes'];
   dataSource: AlunoElement[] = [];
 
   constructor(

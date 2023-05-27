@@ -1,7 +1,8 @@
 <mat-drawer-container class="example-container" autosize>
 
     <mat-drawer #drawer class="example-sidenav" mode="side">
-    <h2>Menu</h2>
+    <h2>Menu rápido</h2>
+    
       <button  routerLink="/gerenciar" mat-icon-button>
         <mat-icon class="grade-icon">grade</mat-icon>
       </button>
@@ -11,7 +12,12 @@
         <mat-icon>density_medium</mat-icon>
 
       </button>
-      <h3>Visualizar turma</h3>
+      <h3>Gerenciar presença</h3>
+
+      <button class="revisao-professores" routerLink="" mat-icon-button>
+        <mat-icon>person_pin</mat-icon>
+      </button>
+      <h3>Gerenciar professores</h3>
     </mat-drawer>
   
     <div class="example-sidenav-content">
@@ -45,7 +51,7 @@
       <mat-card-content>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button routerLink="/">Gerenciar</button>
+        <button mat-button routerLink="/professor">Gerenciar</button>
       </mat-card-actions>
     </mat-card>
 

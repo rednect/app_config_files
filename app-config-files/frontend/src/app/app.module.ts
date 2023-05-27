@@ -25,6 +25,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+import { AddProfessoresComponent } from './frontend/add-professores/add-professores.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { MatCardModule } from '@angular/material/card';
     addAlunoComponent,
     HeaderComponent,
     ElementFormsComponent,
-    ViewTurmasComponent
+    ViewTurmasComponent,
+    AddProfessoresComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { MatCardModule } from '@angular/material/card';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
