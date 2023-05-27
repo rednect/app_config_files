@@ -1,4 +1,29 @@
-<button mat-button routerLink="/menu" color="primary">Voltar</button>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <h2>Menu rápido</h2>
+  
+    <button class="botaomenu" routerLink="/menu" mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>Voltar ao menu</h3>
+  
+    <button  routerLink="/gerenciar" mat-icon-button>
+        <mat-icon class="grade-icon">grade</mat-icon>
+    </button>
+    <h3>Gerenciar turma</h3>
+  
+    <button class="revisao-turma" routerLink="/lista" mat-icon-button>
+        <mat-icon>density_medium</mat-icon>
+    </button>
+    <h3>Visualizar turma</h3>
+  
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <button type="button" mat-icon-button color="primary" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  
 <div class="example-action-buttons">
 
 </div>
@@ -13,12 +38,18 @@
         Informe a data da aula
         <mat-icon>date_range</mat-icon>
       </mat-panel-description>
+
     </mat-expansion-panel-header>
 
     <mat-form-field>
       <mat-label>Data</mat-label>
       <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
     </mat-form-field>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <button mat-raised-button class="confirmButton">
+      Confirmar
+  </button>
   </mat-expansion-panel>
+
 </mat-accordion>

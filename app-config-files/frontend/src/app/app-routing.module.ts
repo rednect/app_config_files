@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './frontend/home/home.component';
 import { addAlunoComponent } from './frontend/addAluno/addAluno.component';
 import { ViewTurmasComponent } from './frontend/view-turmas/view-turmas.component';
+import { AddProfessoresComponent } from './frontend/add-professores/add-professores.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   {
     path: 'lista', component: ViewTurmasComponent
+  },
+  {
+    path: 'professor', component: AddProfessoresComponent
   }
 ];
 
