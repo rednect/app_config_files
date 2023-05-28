@@ -122,7 +122,7 @@
 
 # Modelo de domínio
 
-![Modelo de dominio](https://user-images.githubusercontent.com/89556525/221445799-88248780-de4e-41ad-ab42-a38c3ca1330f.png)
+![PPADS diagrama-Page-1 drawio](https://github.com/rednect/app_config_files/assets/89556525/7a3f5306-b85e-4d40-8040-c3a10260a9fb)
 
 # Decisões de arquitetura
 
