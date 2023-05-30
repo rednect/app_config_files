@@ -18,7 +18,7 @@ export class StudentsService {
 
   async create(tia: string, body: any) {
     let students = await this.studentsRepository.findOne({where: {tia: body.tia}});
-    if (students) {
+    if (!students) {
       await this.studentsRepository.save(this.studentsRepository.create(body as DeepPartial<Student>));
     } else {
       throw new HttpException('Aluno já cadastrado', 406)

@@ -7,12 +7,6 @@ import { AlunoElementService } from 'src/app/services/alunoElement.service';
 
 // import { AlunoElement } from './backend/model/AlunoElement';
 
-
-const ELEMENT_DATA: AlunoElement[] = [
-  {nome: 'Lucas', tia: '32129610', turma: '5J'},
-  {nome: 'Pedro', tia: '32029401', turma: '4J'}
-];
-
 @Component({
   selector: 'app-home',
   templateUrl: './addAluno.component.html',
@@ -22,7 +16,7 @@ const ELEMENT_DATA: AlunoElement[] = [
 export class addAlunoComponent {
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['nome', 'tia', 'turma', 'acoes'];
+  displayedColumns: string[] = ['nome_aluno', 'tia', 'turma', 'acoes'];
   dataSource: AlunoElement[] = [];
 
   constructor(
@@ -31,28 +25,76 @@ export class addAlunoComponent {
     ) {
       this.alunoElementService.getAlunos()
         .subscribe((data: AlunoElement[]) => {
+          console.log(data)
           this.dataSource = data;
         });
     }
 
-
-
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
     openDialog(element: AlunoElement| null): void {
       const dialogRef = this.dialog.open(ElementFormsComponent, {
+        width: '250px',
         data: element === null ?{
-          nome: null
-        } : element
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        if(result !== undefined) {
-          this.dataSource.push(result);
-          this.table.renderRows();
+          nome_aluno: '',
+          sobrenome_aluno:'',
+          tia: '',
+          turma: null
+        } : {
+          id: element.id,
+          nome: element.nome_aluno,
+          sobrenome: element.sobrenome_aluno,
+          tia: element.tia,
+          turma: element.turma
         }
       });
+    
+  
+      // dialogRef.afterClosed().subscribe(result => {
+      //   if(result !== undefined) {
+      //     console.log(result);
+      //     if (this.dataSource.map(p=> p.id).includes(result.id)) {
+      //     this.dataSource.push(result);
+      //     this.table.renderRows();
+      //   } else {
+      //     this.alunoElementService.createAlunos(result)
+      //       .subscribe((data: AlunoElement) => {
+      //         this.dataSource.push(result);
+      //         this.table.renderRows();
+      //       });
+      //     }
+      //   }
+      // });
+      dialogRef.afterClosed().subscribe(result => {
+        this.alunoElementService.createAlunos(result)
+          .subscribe((data:AlunoElement) => {
+
+            this.dataSource.push(result);
+            this.table.renderRows();
+            window.location.reload();
+          // Lidar com a resposta da requisição POST
+          console.log('Aluno criado com sucesso!', result);
+        }, error => {
+          // Lidar com o erro da requisição POST
+          console.log(result)
+          console.error('Erro ao criar aluno:', error);
+        });
+      });
+      
     }
+
+      editElement(element: AlunoElement): void{
+        console.log(element)
+        this.openDialog(element);
+      }
+
+      deleteElement(position: number): void{
+        this.alunoElementService.deleteAlunos(position)
+          .subscribe(() => {
+                    this.dataSource = this.dataSource.filter(p => p.id !== position)
+          })
+
+      }
     }
 

@@ -1,5 +1,8 @@
 export interface AlunoElement {
-    nome: string;
+    id:number;
+    position: number;
+    nome_aluno: string;
+    sobrenome_aluno:string;
     tia: string;
     turma: string;
   }

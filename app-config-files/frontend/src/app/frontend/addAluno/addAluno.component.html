@@ -52,10 +52,21 @@
 <button mat-button color="primary" (click)="openDialog(null)">Adicionar Aluno</button>
 
 <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- Coluna de Posição -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Posição </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
 <!-- Coluna de nome -->
-  <ng-container matColumnDef="nome">
+  <ng-container matColumnDef="nome_aluno">
     <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.nome_aluno}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sobrenome_aluno">
+    <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+    <td mat-cell *matCellDef="let element"> {{element.sobrenome_aluno}} </td>
   </ng-container>
 
 
@@ -75,8 +86,11 @@
   <ng-container matColumnDef="acoes">
     <th mat-header-cell *matHeaderCellDef> Ações </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button>
+      <button mat-icon-button (click)="editElement(element)">
         <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteElement(element.id)" color="primary">
+        <mat-icon>delete</mat-icon>
       </button>
 
     </td>
