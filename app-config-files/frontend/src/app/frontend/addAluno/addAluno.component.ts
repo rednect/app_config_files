@@ -46,7 +46,8 @@ export class addAlunoComponent {
           nome: element.nome_aluno,
           sobrenome: element.sobrenome_aluno,
           tia: element.tia,
-          turma: element.turma
+          turma: null
+          // turma: element.turma
         }
       });
     
