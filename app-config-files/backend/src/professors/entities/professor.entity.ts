@@ -11,12 +11,9 @@ export class Professor {
   nome_professor: string;
 
   @Column()
-  sobrenome_professor: string;
-
-  @Column()
   tia: string;
 
-  @OneToMany(() => Schedule, (schedule) => schedule.professor)
-  schedule: Schedule[]
+  @OneToMany(()=> Schedule, relacao => relacao.professors, {cascade: [ 'insert', 'update' ]})
+  aulas: Schedule []
 
 }

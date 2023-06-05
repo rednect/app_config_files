@@ -5,8 +5,6 @@ import { MatTable } from '@angular/material/table';
 import { AlunoElement } from 'src/app/backend/model/alunoElement';
 import { AlunoElementService } from 'src/app/services/alunoElement.service';
 
-// import { AlunoElement } from './backend/model/AlunoElement';
-
 @Component({
   selector: 'app-home',
   templateUrl: './addAluno.component.html',

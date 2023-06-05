@@ -11,11 +11,10 @@ import { Schedule } from "./schedule.entity";
     @Column()
     nome_turma: string;
 
-    @OneToMany(() => Student, (student) => student.turma)
-    student: Student[]
+    @OneToMany(()=> Student, relacao => relacao.turmas, {cascade: [ 'insert', 'update' ]})
+    alunos: Student []
 
-    @OneToMany(() => Schedule, (schedule) => schedule.turma)
-    @JoinTable()
-    schedule: Schedule[];
+    @OneToMany(()=> Schedule, relacao1 => relacao1.turmas, {cascade: [ 'insert', 'update' ]})
+    aulas: Schedule []   
 
   }

@@ -20,10 +20,10 @@ import { Professor } from "src/professors/entities/professor.entity";
     @Column()
     dia_da_semana: string;
 
-    @ManyToOne(() => Turma, (turma) => turma.schedule)
-    turma: Turma[]
+    @ManyToOne(() => Turma, turma => turma.aulas, {cascade: true, onDelete: 'CASCADE'})
+    turmas: Turma[]
 
-    @ManyToOne(() => Professor, (professor) => professor.schedule)
-    professor: Professor;
+    @ManyToOne(() => Professor, professor => professor.aulas, {cascade: true, onDelete: 'CASCADE'})
+    professors: Professor;
 
   }

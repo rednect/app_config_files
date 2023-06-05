@@ -17,7 +17,11 @@ export class ProfessorsService {
   }
 
   async create(tia: string, body: any) {
-    let professors = await this.professorRepository.findOne({where: {tia: body.tia}});
+
+  let professors = await this.professorRepository.findOne({where: {tia: body.tia}, relations: []});
+
+  // let professors = await this.professorRepository.findOne({where: {tia: body.tia}});
+
     if (professors) {
       throw new HttpException('Professor já cadastrado', 406)
     } else {
