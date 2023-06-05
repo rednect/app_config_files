@@ -5,8 +5,6 @@ import { MatTable } from '@angular/material/table';
 import { AlunoElement } from 'src/app/backend/model/alunoElement';
 import { AlunoElementService } from 'src/app/services/alunoElement.service';
 
-// import { AlunoElement } from './backend/model/AlunoElement';
-
 @Component({
   selector: 'app-home',
   templateUrl: './addAluno.component.html',
@@ -46,7 +44,8 @@ export class addAlunoComponent {
           nome: element.nome_aluno,
           sobrenome: element.sobrenome_aluno,
           tia: element.tia,
-          turma: element.turma
+          turma: null
+          // turma: element.turma
         }
       });
     

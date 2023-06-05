@@ -1,10 +1,10 @@
-.example-sidenav {
+.fastmenu {
     padding: 5px;    
     width: 12%;
   }
 
-  .example-container {
+  .telainteira {
     width: 100%;
-    height: 95%;
+    height: calc(100vh - 65px); 
     border: 1px solid rgba(0, 0, 0, 0.5);
   }

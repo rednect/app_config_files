@@ -27,6 +27,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { AddProfessoresComponent } from './frontend/add-professores/add-professores.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ProfessorFormsComponent } from './frontend/professor-forms/professor-forms.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { MatSelectModule } from '@angular/material/select';
     HeaderComponent,
     ElementFormsComponent,
     ViewTurmasComponent,
-    AddProfessoresComponent
+    AddProfessoresComponent,
+    ProfessorFormsComponent,
+    TurmasFormsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
