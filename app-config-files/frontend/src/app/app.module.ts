@@ -29,6 +29,7 @@ import { AddProfessoresComponent } from './frontend/add-professores/add-professo
 import { MatSelectModule } from '@angular/material/select';
 import { ProfessorFormsComponent } from './frontend/professor-forms/professor-forms.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ElementFormsComponent,
     ViewTurmasComponent,
     AddProfessoresComponent,
-    ProfessorFormsComponent
+    ProfessorFormsComponent,
+    TurmasFormsComponent
   ],
   imports: [
     BrowserModule,

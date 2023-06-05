@@ -30,18 +30,13 @@
   </button>
   <h3>Voltar ao menu</h3>
 
-  <button  routerLink="/gerenciar" mat-icon-button>
-      <mat-icon class="grade-icon">grade</mat-icon>
-  </button>
-  <h3>Gerenciar turma</h3>
-
   <button class="revisao-turma" routerLink="/lista" mat-icon-button>
       <mat-icon>density_medium</mat-icon>
   </button>
-  <h3>Visualizar turma</h3>
+  <h3>Visualizar presenças</h3>
 
-  <button class="revisao-professores" routerLink="" mat-icon-button>
-    <mat-icon>person_pin</mat-icon>
+  <button class="revisao-professores" routerLink="/professor" mat-icon-button>
+      <mat-icon>person_pin</mat-icon>
   </button>
   <h3>Gerenciar professores</h3>
   
@@ -51,7 +46,6 @@
     <button type="button" mat-icon-button color="primary" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-
 <!-- Tabela  -->
 <div class="container">
 <button mat-button color="primary" (click)="openDialog(null)">Adicionar Aluno</button>
