@@ -137,6 +137,27 @@
 
 ![Diagrama de Implantação](https://github.com/rednect/app_config_files/blob/master/docs/Diagrama%20de%20Implanta%C3%A7%C3%A3o.png?raw=true)
 
+# Planos de Teste
+![Plano de Teste](https://github.com/rednect/app_config_files/blob/master/docs/Script%20Teste%201.png?raw=true)
+
+
+![Plano de Teste](https://github.com/rednect/app_config_files/assets/88154125/439df11c-61e1-436b-b271-ffa395bbe795)
+
+
+![Plano de Teste](https://github.com/rednect/app_config_files/blob/master/docs/script%20teste%201%20(3).png?raw=true)
+
+
+![Plano de Teste](https://github.com/rednect/app_config_files/blob/master/docs/Script%20teste%202.png?raw=true)
+
 # Referências
 
-*&lt;Lista de referências&gt;*
+https://www.lucidchart.com/pages/pt/diagrama-de-casos-de-uso
+
+
+https://www.smashingmagazine.com/2022/01/ux-ui-prototyping-tools-comparison-guide/
+
+
+https://www.infoq.com/architecture-design/
+
+
+https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-deployment-diagram-tutorial/
