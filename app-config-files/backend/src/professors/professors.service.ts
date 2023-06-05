@@ -17,8 +17,8 @@ export class ProfessorsService {
   }
 
   async create(tia: string, body: any) {
-    let professors = await this.professorRepository.findOne({where: {tia: body.tia}});
-    if (!professors) {
+    let professors = await this.professorRepository.findOne({where: {tia: body.tia}, relations: []});
+    if (professors) {
       throw new HttpException('Professor já cadastrado', 406)
     } else {
       await this.professorRepository.save(this.professorRepository.create(body as DeepPartial<Professor>));

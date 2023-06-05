@@ -8,9 +8,6 @@ import { Turma } from "./turmas.entity";
   
     @PrimaryGeneratedColumn()
     id: number;
-  
-    @Column({ type: 'bool', default: 0 })
-    presence: boolean;
 
     @Column({ type: "timestamp" })
     data_presenca: Date;

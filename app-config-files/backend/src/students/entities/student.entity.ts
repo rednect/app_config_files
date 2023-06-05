@@ -11,12 +11,9 @@ export class Student {
   nome_aluno: string;
 
   @Column()
-  sobrenome_aluno: string;
-
-  @Column()
   tia: string;
 
-  @ManyToOne(() => Turma, (turma) => turma.student)
-  turma: Turma;
+  @ManyToOne(() => Turma, turma => turma.alunos, {cascade: true, onDelete: 'CASCADE'})
+  turmas: Turma 
 
 }

@@ -9,6 +9,8 @@ import { StudentsModule } from './students/students.module';
 import { UsersModule } from './users/users.module';
 import { ProfessorsModule } from "./professors/professors.module";
 import { ProfessorsController } from "./professors/professors.controller";
+import { PresencesController } from "./presences/presences.controller";
+import { PresencesModule } from "./presences/presences.module";
 
 @Module({
 
@@ -19,9 +21,9 @@ import { ProfessorsController } from "./professors/professors.controller";
     synchronize: elephantconfig.synchronize,
     logging: elephantconfig.logging,
     entities: elephantconfig.entities,
-  }), UsersModule, StudentsModule, ProfessorsModule],
+  }), UsersModule, StudentsModule, ProfessorsModule, PresencesModule],
 
-  controllers: [AppController, StudentsController, UsersController, ProfessorsController],
+  controllers: [AppController, StudentsController, UsersController, ProfessorsController, PresencesController],
 
   providers: [AppService],
 
