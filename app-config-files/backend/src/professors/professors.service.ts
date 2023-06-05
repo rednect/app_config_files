@@ -21,6 +21,9 @@ export class ProfessorsService {
     let professors = await this.professorRepository.findOne({where: {tia: body.tia}, relations: []});
 =======
     let professors = await this.professorRepository.findOne({where: {tia: body.tia}});
+<<<<<<< HEAD
+>>>>>>> 0786bf9e4df269dd8cbf5323797a58a1008335f5
+=======
 >>>>>>> 0786bf9e4df269dd8cbf5323797a58a1008335f5
     if (professors) {
       throw new HttpException('Professor já cadastrado', 406)
