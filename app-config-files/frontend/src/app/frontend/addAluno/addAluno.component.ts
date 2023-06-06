@@ -36,13 +36,11 @@ export class addAlunoComponent {
         width: '250px',
         data: element === null ?{
           nome_aluno: '',
-          sobrenome_aluno:'',
           tia: '',
           turma: null
         } : {
           id: element.id,
           nome: element.nome_aluno,
-          sobrenome: element.sobrenome_aluno,
           tia: element.tia,
           turma: null
           // turma: element.turma
