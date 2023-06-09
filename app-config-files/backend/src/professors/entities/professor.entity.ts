@@ -20,7 +20,7 @@ export class Professor {
   nomeProfessor: string;
 
   @Column()
-  email: string;
+  tia: string;
 
   @Column()
   course_name: string;

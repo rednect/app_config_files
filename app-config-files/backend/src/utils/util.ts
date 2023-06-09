@@ -59,6 +59,5 @@ export function genFileName(filename: string) {
 }
 
 export async function base64_encode(file_path: string) {
-
     return fs.readFileSync(file_path, 'base64');
 }

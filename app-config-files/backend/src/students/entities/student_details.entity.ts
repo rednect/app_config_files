@@ -15,12 +15,15 @@ export class StudentDetails {
   nome_aluno: string;
 
   @Column()
+  tia: string;
+
+  @Column()
   curso_aluno: string;
 
   @Column()
   sala_aluno: string;
 
-  @Column()
-  frequencia_aluno: number;
+  // @Column()
+  // frequencia_aluno: number;
 
 }

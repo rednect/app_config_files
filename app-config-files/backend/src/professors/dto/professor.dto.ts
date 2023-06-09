@@ -1,7 +1,7 @@
 interface CreateProfessor {
   id?: number;
   nomeProfessor: string;
-  email: string;
+  tia: string;
 }
 
 export {

@@ -46,6 +46,7 @@ export class StudentsService {
     let studentDetails = await this.studentsDetailsRepository.save(
       this.studentsDetailsRepository.create(body as DeepPartial<StudentDetails>)
     );
+    
     let student = await this.studentsRepository.save(
       this.studentsRepository.create(body as DeepPartial<Student>)
     );

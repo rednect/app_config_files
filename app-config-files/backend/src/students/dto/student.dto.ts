@@ -5,7 +5,7 @@ interface CreateStudent {
 
   sala_aluno: string;
 
-  frequencia_aluno: number;
+  tia: string;
 }
 
 interface RegisterStudentInClass {
@@ -22,7 +22,7 @@ interface StudentReturn {
     nome_aluno: string;
     curso_aluno: string;
     sala_aluno: string;
-    frequencia_aluno: string;
+    tia: string;
   }
 }
 

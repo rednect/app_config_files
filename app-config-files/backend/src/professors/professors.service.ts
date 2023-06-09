@@ -33,11 +33,11 @@ export class ProfessorsService {
   }
 
   async create(body: CreateProfessor) {
-    const { email } = body;
+    const { tia } = body;
 
     let professor = await this.professorRepository.findOne({
       where: {
-        email: email
+        tia: tia
       }
     });
 
