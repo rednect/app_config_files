@@ -1,35 +1,23 @@
-import { Body, Controller, Post, Get, Param, Delete, Put } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param } from '@nestjs/common';
 import { StudentsService } from './students.service';
+import { CreateStudent, RegisterStudentInClass } from './dto/student.dto';
 
 @Controller('students')
 export class StudentsController {
   constructor(private readonly studentsService: StudentsService) {}
 
   @Get()
-  findAll() {
-    return this.studentsService.findAll();
+  getAll() {
+    return this.studentsService.getAll();
   }
 
-  @Post()
-  create(@Body() body: Body, @Param('tia') tia:string) {
-    return this.studentsService.create(tia, body);
+  @Get('/getById/:id')
+  getById(@Param('id') id: number) {
+    return this.studentsService.getPresencesFromStudent(id);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id:string) {
-    return this.studentsService.findOne(+id);
+  @Post('create')
+  create(@Body() body: CreateStudent) { 
+    return this.studentsService.create(body);
   }
-
-  @Put('/update/:userId')
-  update(@Param('userId') userId:number, @Body() body: Body) {
-    return this.studentsService.update(+userId, body);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id:string) {
-    return this.studentsService.remove(+id);
-  }
-
 }
-
-

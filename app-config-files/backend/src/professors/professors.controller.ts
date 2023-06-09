@@ -1,33 +1,18 @@
-import { Body, Controller, Get, Post, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ProfessorsService } from './professors.service';
+import { CreateProfessor } from './dto/professor.dto';
 
 @Controller('professors')
 export class ProfessorsController {
   constructor(private readonly professorsService: ProfessorsService) {}
 
   @Get()
-  findAll() {
-    return this.professorsService.findAll();
+  getAll() {
+    return this.professorsService.getAll();
   }
 
-  @Post()
-  create(@Body() body: Body, @Param('tia') tia:string) {
-    return this.professorsService.create(tia, body);
+  @Post('create')
+  create(@Body() body: CreateProfessor) {
+    return this.professorsService.create(body);
   }
-
-  @Get(':id')
-  findOne(@Param('id') id:string) {
-    return this.professorsService.findOne(+id);
-  }
-
-  @Put('/update/:userId')
-  update(@Param('userId') userId:number, @Body() body: Body) {
-    return this.professorsService.update(+userId, body);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id:string) {
-    return this.professorsService.remove(+id);
-  }
-
 }

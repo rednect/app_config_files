@@ -1,50 +1,68 @@
-import { DeepPartial, Repository } from 'typeorm';
+import { DeepPartial } from 'typeorm';
+import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { HttpException, HttpStatus, Injectable, Body } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Professor } from './entities/professor.entity';
+import { CreateProfessor } from './dto/professor.dto';
+import { ClassEntity } from 'src/classes/entities/class.entity';
 
 @Injectable()
 export class ProfessorsService {
 
   constructor(
     @InjectRepository(Professor)
-    private professorRepository: Repository<Professor>,
+    private readonly professorRepository: Repository<Professor>,
+
+    @InjectRepository(ClassEntity)
+    private readonly classesRepository: Repository<ClassEntity>
   ) {}
   
-  async findAll(): Promise<Professor[]> {
-    let professors = await this.professorRepository.find({relations: []});
-    return professors
+  async getAll() {
+    let professors = await this.professorRepository.find({
+      relations: [
+        'classes'
+      ]
+    });
+
+    if(professors.length) return professors;
+
+    throw new HttpException({
+      msg: "No professor was found",
+      error: "Not Found"
+    }, HttpStatus.NOT_FOUND);
   }
 
-  async create(tia: string, body: any) {
+  async create(body: CreateProfessor) {
+    const { email } = body;
 
-  let professors = await this.professorRepository.findOne({where: {tia: body.tia}, relations: []});
+    let professor = await this.professorRepository.findOne({
+      where: {
+        email: email
+      }
+    });
 
-  // let professors = await this.professorRepository.findOne({where: {tia: body.tia}});
+    if(!professor) {
+      let newProfessor = await this.professorRepository.save(
+        this.professorRepository.create(body as DeepPartial<Professor>)
+      );
+      
+      let classes = await this.classesRepository.find({
+        where: {
+          course_name: newProfessor.course_name
+        }
+      });
 
-    if (professors) {
-      throw new HttpException('Professor já cadastrado', 406)
-    } else {
-      await this.professorRepository.save(this.professorRepository.create(body as DeepPartial<Professor>));
-    }
-  }
+      newProfessor.classes = classes;
 
-  async findOne(id: number): Promise<Professor> {
-    let professors = await this.professorRepository.findOne({where: {id: id}, relations: []});
-    return professors;
-  }
+      await this.classesRepository.save(classes);
 
-  async update(userId:number, body:any) {
-    let professors = await this.professorRepository.findOne({where: {id: userId}, relations:[]});
-    if (professors) {
-      professors = body
-      return this.professorRepository.save(professors);
-    }
-  }
-
-    async remove(userId: number) {
-      let professors = await this.professorRepository.findOne({where: {id: userId}, relations: []});
-      return this.professorRepository.delete(userId)
+      return await this.professorRepository.save(newProfessor);
     }
     
+    throw new HttpException({
+      msg: "Professor already exists",
+      error: "Not acceptable"
+    }, HttpStatus.NOT_ACCEPTABLE);
+  }
+
 }
