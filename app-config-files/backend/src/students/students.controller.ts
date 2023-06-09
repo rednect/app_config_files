@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Get, Param } from '@nestjs/common';
 import { StudentsService } from './students.service';
-import { CreateStudent, RegisterStudentInClass } from './dto/student.dto';
+import { CreateStudent } from './dto/student.dto';
 
 @Controller('students')
 export class StudentsController {
@@ -20,4 +20,10 @@ export class StudentsController {
   create(@Body() body: CreateStudent) { 
     return this.studentsService.create(body);
   }
+
+  @Get('/all')
+  findAll() {
+    return this.studentsService.findAll();
+  }
+
 }

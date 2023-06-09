@@ -24,7 +24,7 @@ export class ClassEntity {
   @OneToMany(() => Student, student => student.class, {
     cascade: ['insert', 'update']
   })
-  students?: Student[];
+  student?: Student[];
 
   @ManyToMany(() => Professor, (professors) => professors.classes)
   @JoinTable()

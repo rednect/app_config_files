@@ -1,9 +1,8 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Calling } from './entities/calling.entity';
 import { DeepPartial, Repository } from 'typeorm';
 import { Student } from './entities/student.entity';
-import { CreateStudent, RegisterStudentInClass, StudentReturn } from './dto/student.dto';
+import { CreateStudent, StudentReturn } from './dto/student.dto';
 import { StudentDetails } from './entities/student_details.entity';
 import { ClassEntity } from 'src/classes/entities/class.entity';
 import { Presence } from 'src/presences/entities/presence.entity';
@@ -24,8 +23,13 @@ export class StudentsService {
     private readonly presenceRepository: Repository<Presence>
   ) { }
 
+  async findAll(): Promise<StudentDetails[]> {
+    let student = await this.studentsDetailsRepository.find();
+    return student;
+  }
+
   async getAll(): Promise<StudentReturn[]> {
-    let students: StudentReturn[] | any = await this.studentsRepository.find({
+    let student: StudentReturn[] | any = await this.studentsRepository.find({
       relations: [
         'student_details',
         'class', 
@@ -33,7 +37,7 @@ export class StudentsService {
       ]
     });
 
-    if (students.length) return students;
+    if (student.length) return student;
 
     throw new HttpException({
       msg: "No Student was Found",
@@ -46,7 +50,6 @@ export class StudentsService {
     let studentDetails = await this.studentsDetailsRepository.save(
       this.studentsDetailsRepository.create(body as DeepPartial<StudentDetails>)
     );
-    
     let student = await this.studentsRepository.save(
       this.studentsRepository.create(body as DeepPartial<Student>)
     );

@@ -5,7 +5,7 @@ dotenv.config();
 export const elephantconfig = {
   "name": "default",
   "type": "postgres",
-  "url": "postgres://xozfvzyv:7TJ64Sw5pkhsKyFOjUeqNm6fKl84Lglj@silly.db.elephantsql.com/xozfvzyv", 
+  "url": "postgres://bvhcvdsx:KiWVL5GMzUiMXQqDMQ1_AQjsrB7DPVak@silly.db.elephantsql.com/bvhcvdsx", 
   "synchronize": true,
   "logging": true,
   "entities": [__dirname + '/../**/*.entity.{js,ts}'],

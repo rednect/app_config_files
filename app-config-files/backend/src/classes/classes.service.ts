@@ -16,7 +16,7 @@ export class ClassesService {
   async getAll(): Promise<ClassEntity[]> {
     let classes = await this.classEntityRepository.find({ 
       relations: [
-        'students',
+        'student',
         'professors'
       ] 
     });
