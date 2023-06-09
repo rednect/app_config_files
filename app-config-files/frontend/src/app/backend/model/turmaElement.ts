@@ -1,3 +1,4 @@
 export interface TurmaElement{
-    nome: string;
+    class_name: string;
+    course_name: string;
 }

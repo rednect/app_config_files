@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Nome completo</mat-label>
-    <input matInput [(ngModel)]="data.nome_professor">
+    <input matInput [(ngModel)]="data.nomeProfessor">
   </mat-form-field>
   <hr>
   <mat-form-field appearance="fill">
@@ -11,8 +11,13 @@
   </mat-form-field>
   <hr>
   <mat-form-field appearance="fill">
-    <mat-label>Aula a lecionar</mat-label>
-    <input matInput [(ngModel)]="data.schedule">
+    <mat-label>Curso</mat-label>
+    <mat-select [(ngModel)]="data.course_name">
+      <mat-option value="5J">5J</mat-option>
+      <mat-option value="4J">4J</mat-option>
+      <mat-option value="3F">3F</mat-option>
+      <mat-option value=54>5G</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

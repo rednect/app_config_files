@@ -42,13 +42,7 @@
       <ng-container matColumnDef="nome_professor">
         <th mat-header-cell *matHeaderCellDef> Nome </th>
         <td mat-cell *matCellDef="let element"> {{element.nome_professor}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="sobrenome_professor">
-        <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
-        <td mat-cell *matCellDef="let element"> {{element.sobrenome_professor}} </td>
-      </ng-container>
-    
+      </ng-container>   
     
       <!-- TIA Coluna -->
       <ng-container matColumnDef="tia">
@@ -57,9 +51,9 @@
       </ng-container>
     
       <!-- Coluna de aula -->
-      <ng-container matColumnDef="schedule">
-        <th mat-header-cell *matHeaderCellDef> Aula </th>
-        <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
+      <ng-container matColumnDef="curso">
+        <th mat-header-cell *matHeaderCellDef> Matéria </th>
+        <td mat-cell *matCellDef="let element"> {{element.course_name}} </td>
       </ng-container>
     
       <!-- Coluna de ações -->

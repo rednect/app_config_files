@@ -14,7 +14,7 @@ import { AlunoElementService } from 'src/app/services/alunoElement.service';
 export class addAlunoComponent {
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['nome_aluno', 'tia', 'turma', 'acoes'];
+  displayedColumns: string[] = ['nome_aluno', 'tia', 'turma', 'curso', 'acoes'];
   dataSource: AlunoElement[] = [];
 
   constructor(
@@ -37,12 +37,14 @@ export class addAlunoComponent {
         data: element === null ?{
           nome_aluno: '',
           tia: '',
-          turma: null
+          sala_aluno: null,
+          curso_aluno: ''
         } : {
           id: element.id,
           nome: element.nome_aluno,
           tia: element.tia,
-          turma: null
+          sala_aluno: element.sala_aluno,
+          curso_aluno: element.curso_aluno
           // turma: element.turma
         }
       });

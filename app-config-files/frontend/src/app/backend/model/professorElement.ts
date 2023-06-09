@@ -1,7 +1,6 @@
 export interface ProfessorElement {
     id:number;
-    nome_professor: string;
-    sobrenome_professor: string;
+    nomeProfessor: string;
     tia: string;
-    schedule: string;
+    course_name: string;
   }

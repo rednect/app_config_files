@@ -29,10 +29,13 @@ export class ViewTurmasComponent {
 
   constructor(private dialog: MatDialog) {}
   
-  openDialog() {
+  openDialog(element: TurmaElement| null): void {
     const dialogRef = this.dialog.open(TurmasFormsComponent, {
-      width: '260px', // Largura do dialog
-      data: { /* Dados que você pode passar para o dialog */ }
+      width: '250px',
+      data: element === null ?{
+        course_name: '',
+        class_name: ''
+      } : {}
     });
   }
 }

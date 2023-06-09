@@ -72,7 +72,13 @@
   <!-- Coluna de turma -->
   <ng-container matColumnDef="turma">
     <th mat-header-cell *matHeaderCellDef> Turma </th>
-    <td mat-cell *matCellDef="let element"> {{element.turma}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.sala_aluno}} </td>
+  </ng-container>
+
+  <!-- Coluna de Curso -->
+  <ng-container matColumnDef="curso">
+    <th mat-header-cell *matHeaderCellDef> Matéria </th>
+    <td mat-cell *matCellDef="let element"> {{element.curso_aluno}} </td>
   </ng-container>
 
   <!-- Coluna de ações -->

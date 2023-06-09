@@ -5,8 +5,8 @@ import { AlunoElement } from '../backend/model/alunoElement';
 
 @Injectable()
 export class AlunoElementService {
-    elementApiUrl = 'https://appconfigfiles-production.up.railway.app'
-    // elementApiUrl = 'http://localhost:3000/students';
+    // elementApiUrl = 'https://appconfigfiles-production.up.railway.app'
+    elementApiUrl = 'http://localhost:3000';
     constructor(private http: HttpClient) { }
 
     getAlunos(): Observable<AlunoElement[]> {
@@ -14,7 +14,7 @@ export class AlunoElementService {
     }
 
     createAlunos(Alunos:AlunoElement): Observable<AlunoElement>{
-        return this.http.post<AlunoElement>(`${this.elementApiUrl}/students`, Alunos);
+        return this.http.post<AlunoElement>(`${this.elementApiUrl}/students/create`, Alunos);
     }
 
     editAlunos(id: number, Alunos: AlunoElement): Observable<AlunoElement>{
