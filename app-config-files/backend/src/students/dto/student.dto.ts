@@ -17,12 +17,12 @@ interface RegisterStudentInClass {
 interface StudentReturn {
   id: number;
   nome_aluno: string;
+  tia: string;
   student_details?: {
     id: number;
     nome_aluno: string;
     curso_aluno: string;
     sala_aluno: string;
-    tia: string;
   }
 }
 

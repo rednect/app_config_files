@@ -22,6 +22,9 @@ export class Student {
   @Column()
   nome_aluno: string;
 
+  @Column()
+  tia: string;
+
   @OneToMany(() => Presence, presence => presence.student,{
     cascade: ['insert', 'update']
   })

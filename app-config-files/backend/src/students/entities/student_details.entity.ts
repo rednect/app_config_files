@@ -15,9 +15,6 @@ export class StudentDetails {
   nome_aluno: string;
 
   @Column()
-  tia: string;
-
-  @Column()
   curso_aluno: string;
 
   @Column()
