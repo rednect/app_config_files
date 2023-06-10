@@ -13,17 +13,14 @@
   <mat-form-field appearance="fill">
     <mat-label>Turma</mat-label>
     <mat-select [(ngModel)]="data.sala_aluno">
-      <mat-option value="5J">5J</mat-option>
-      <mat-option value="4J">4J</mat-option>
-      <mat-option value="3F">3F</mat-option>
-      <mat-option value=54>54</mat-option>
+      <mat-option *ngFor="let Turmas of turmas" [value]="Turmas">{{Turmas}}</mat-option>
     </mat-select>
   </mat-form-field>
   <hr>
   <mat-form-field appearance="fill">
     <mat-label>Curso</mat-label>
     <mat-select [(ngModel)]="data.curso_aluno">
-      
+      <mat-option *ngFor="let Materias of materias" [value]="Materias">{{Materias}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

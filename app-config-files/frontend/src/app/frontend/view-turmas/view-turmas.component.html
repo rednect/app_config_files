@@ -50,34 +50,28 @@
       Informações da aula
     </mat-panel-title>
     <mat-panel-description>
-      Informe a data da aula, a turma e a matéria.
+      Informe a turma e a matéria para ministrar faltas.
     </mat-panel-description>
 
   </mat-expansion-panel-header>
 
-    <mat-form-field>
-      <mat-label>Data</mat-label>
-      <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
-    </mat-form-field>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
     <mat-form-field class="campoTurma">
       <mat-label>Turma</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let turma of turmas" [value]="turma.value">
-          {{turma.viewValue}}
+      <mat-select #turmaSelect (selectionChange)="getAlunosFilter(turmaSelect.value, materiaSelect.value)">
+        <mat-option
+        *ngFor="let Turmas of turmas" [value]="Turmas">{{Turmas}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="campoMateria">
       <mat-label>Matéria</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let materia of materias" [value]="materia.value">
-          {{materia.viewValue}}
+      <mat-select #materiaSelect (selectionChange)="getAlunosFilter(turmaSelect.value, materiaSelect.value)"  >
+        <mat-option 
+        *ngFor="let Materias of materias" [value]="Materias">{{Materias}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button class="confirmButton">
+    <button mat-raised-button (click)="getAlunosFilter" class="confirmButton">
       Confirmar
   </button>
   </mat-expansion-panel>

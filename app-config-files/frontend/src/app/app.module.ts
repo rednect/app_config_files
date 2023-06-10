@@ -10,7 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { ElementFormsComponent } from './frontend/element-forms/element-forms.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +41,10 @@ import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.compo
     HeaderComponent,
     ElementFormsComponent,
     ViewTurmasComponent,
+    TurmasFormsComponent,
     AddProfessoresComponent,
-    ProfessorFormsComponent,
-    TurmasFormsComponent
+    ProfessorFormsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.compo
     MatSelectModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,7 +33,7 @@ export class addAlunoComponent {
 
     openDialog(element: AlunoElement| null): void {
       const dialogRef = this.dialog.open(ElementFormsComponent, {
-        width: '250px',
+        width: '260px',
         data: element === null ?{
           nome_aluno: '',
           tia: '',
@@ -45,7 +45,6 @@ export class addAlunoComponent {
           tia: element.tia,
           sala_aluno: element.sala_aluno,
           curso_aluno: element.curso_aluno
-          // turma: element.turma
         }
       });
     

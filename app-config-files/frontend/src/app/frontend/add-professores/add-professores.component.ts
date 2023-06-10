@@ -33,12 +33,6 @@ export class AddProfessoresComponent {
     ngOnInit(): void {
     }
 
-  // reloadDelay(delay:number){
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, delay);
-  // }
-
   openDialog(element: ProfessorElement| null): void {
     const dialogRef = this.dialog.open(ProfessorFormsComponent, {
       width: '250px',
