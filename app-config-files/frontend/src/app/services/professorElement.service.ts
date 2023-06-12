@@ -6,7 +6,7 @@ import { ProfessorElement } from "../backend/model/professorElement";
 
 @Injectable()
 export class ProfessorElementService {
-    elementApiUrl = 'http://localhost:3000';
+    elementApiUrl = 'https://appconfigfiles-production.up.railway.app';
     constructor(private http: HttpClient) { }
 
     getProfessores(): Observable<ProfessorElement[]> {

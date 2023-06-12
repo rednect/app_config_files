@@ -5,8 +5,8 @@ import { AlunoElement } from '../backend/model/alunoElement';
 
 @Injectable()
 export class AlunoElementService {
-    // elementApiUrl = 'https://appconfigfiles-production.up.railway.app'
-    elementApiUrl = 'http://localhost:3000';
+    elementApiUrl = 'https://appconfigfiles-production.up.railway.app'
+    // elementApiUrl = 'http://localhost:3000';
     constructor(private http: HttpClient) { }
 
     getAlunos(): Observable<AlunoElement[]> {

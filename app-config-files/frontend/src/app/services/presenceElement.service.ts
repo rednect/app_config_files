@@ -7,8 +7,8 @@ import { PresenceSourceData } from '../frontend/view-turmas/view-turmas.componen
 
 @Injectable()
 export class PresenceElementService {
-    // elementApiUrl = 'https://appconfigfiles-production.up.railway.app'
-    elementApiUrl = 'http://localhost:3000';
+    elementApiUrl = 'https://appconfigfiles-production.up.railway.app'
+    // elementApiUrl = 'http://localhost:3000';
     constructor(private http: HttpClient) { }
 
     getPresences(): Observable<PresenceSourceData[]> {
