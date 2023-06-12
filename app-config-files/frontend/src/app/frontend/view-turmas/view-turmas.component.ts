@@ -103,10 +103,11 @@ togglePresence(element: TurmaElement) {
     presenca: !element.presence,
     data: new Date().toLocaleDateString('en-US')
     }
-
+  
+  console.log(response)
   this.presenceElementService.createPresences(response)
   .subscribe((data:PresencaElement) => {
-    console.log(response);
+    console.log(data);
   });
 }
 
