@@ -22,7 +22,7 @@ turmas: string[] = []
   ) {
     this.turmaElementService.getTurmas().subscribe(
       (response: any[]) => {
-        this.turmas = response.map(valor => valor.class_name);
+        this.turmas = response.map(valor => valor.course_name);
         console.log(this.turmas);
       })
   }

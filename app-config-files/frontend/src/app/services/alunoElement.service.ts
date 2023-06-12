@@ -13,6 +13,10 @@ export class AlunoElementService {
         return this.http.get<AlunoElement[]>(`${this.elementApiUrl}/students/all`);
     }
 
+    getStudent(): Observable<AlunoElement[]> {
+        return this.http.get<AlunoElement[]>(`${this.elementApiUrl}/students/`);
+    }
+
     getAlunosFilter(turma: string, materia: string): Observable<AlunoElement[]> {
         const params = new HttpParams().set('turma', turma).set('materia',materia);
         const url = `${this.elementApiUrl}/students/all`

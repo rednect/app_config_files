@@ -6,7 +6,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { TurmaElement } from 'src/app/backend/model/turmaElement';
 import { TurmaElementService } from 'src/app/services/turmaElement.service';
 import { AlunoElementService } from 'src/app/services/alunoElement.service';
+import { AlunoElement } from 'src/app/backend/model/alunoElement';
+import { PresenceElementService } from 'src/app/services/presenceElement.service';
+import { PresencaElement } from 'src/app/backend/model/presencaElement';
 
+export interface PresenceSourceData {
+  nome_aluno: string;
+  tia: string;
+  data: string;
+}
 
 interface materias {
   value: string;
@@ -22,56 +30,85 @@ interface turmas {
   selector: 'app-view-turmas',
   templateUrl: './view-turmas.component.html',
   styleUrls: ['./view-turmas.component.scss'],
-  providers: [TurmaElementService, AlunoElementService]
+  providers: [TurmaElementService, AlunoElementService, PresenceElementService]
 })
 export class ViewTurmasComponent {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
-  isChecked = true;
-  formGroup = this.formBuilder.group({
-    presence: ''
-  })
+  colunasMostradas: string[] = ['nome_falta', 'tia_falta', 'data_falta', 'acoes']
   displayedColumns: string[] = ['nome_aluno', 'tia', 'falta'];
   showButton: boolean = false
+  alunoSource: AlunoElement[] = [];
   dataSource: TurmaElement[] = [];
   turmas: any[] = [];
   materias: any[] = [];
+  presences: TurmaElement[] = [];
+  dataSourcePresenca: PresenceSourceData[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
     private dialog: MatDialog,
+    public presenceElementService: PresenceElementService,
     public alunoElementService: AlunoElementService,
     public turmaElementService : TurmaElementService,
   ) {
     this.turmaElementService.getTurmas()
       .subscribe((response: any[]) => {
+        this.presences = response;
         this.turmas = response.map(valor => valor.class_name);
         this.materias = response.map(valor => valor.course_name)
-        console.log(this.turmas);
-        console.log(this.materias);
+        // console.log(this.turmas);
+        // console.log(this.materias);
       });
   }
   
-ngOnInit(): void {
+ngOnInit(): void{
 }
+
+getPresenca(nomealuno: string, tia: string, data: string){
+
+  this.presenceElementService.getPresences().subscribe(
+    (presence: PresenceSourceData[]) => {
+      console.log(presence);
+      this.dataSourcePresenca = presence;
+    }) 
+}
+
+
 getAlunosFilter(turma: string, materia: string) {
-  this.alunoElementService.getAlunos().subscribe(
+  this.alunoElementService.getStudent().subscribe(
     (alunos: any[]) => {
       console.log(alunos)
-      const alunosFiltrados = alunos.filter(aluno => aluno.sala_aluno === turma && aluno.curso_aluno === materia);
-      // console.log(alunosFiltrados);
+      const alunosFiltrados = alunos.filter(aluno => aluno.student_details.sala_aluno === turma && aluno.student_details.curso_aluno === materia);
+      console.log(alunosFiltrados);
       this.dataSource = alunosFiltrados;
-      console.log(this.dataSource)
+      // console.log(this.dataSource)
       this.showButton = this.dataSource.length > 0;
     }
   );
 }
 
-getAlunosList(alunosFiltrados: any){
-  this.alunoElementService.getAlunos()
+togglePresence(element: TurmaElement) {
+
+  const currentDate = new Date().toLocaleDateString('en-US' , {
+    month: '2-digit',
+    day: '2-digit',
+    year: '2-digit'
+  })
+
+  let response = {
+    idAluno: element.id,
+    presenca: !element.presence,
+    data: new Date().toLocaleDateString('en-US')
+    }
+
+  this.presenceElementService.createPresences(response)
+  .subscribe((data:PresencaElement) => {
+    // console.log(response);
+  });
 }
 
-alertFormValues(formGroup: FormGroup){
-  alert(JSON.stringify(formGroup.value, null, 2));
+getAlunosList(alunosFiltrados: any){
+  this.alunoElementService.getAlunos()
 }
 
 openDialog(element: TurmaElement| null): void {
@@ -99,6 +136,16 @@ openDialog(element: TurmaElement| null): void {
       console.error('Erro ao criar Turma:', error);
     });
   });
+}
+
+deletePresenca(id: number) {
+  this.presenceElementService.deletePresences(id)
+    .subscribe(() => {
+      (response: any) => [
+        console.log('Excluído com sucesso' + response)
+      ]
+    })
+
 }
 
 }

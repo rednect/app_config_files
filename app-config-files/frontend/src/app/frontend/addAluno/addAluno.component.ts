@@ -49,21 +49,6 @@ export class addAlunoComponent {
       });
     
   
-      // dialogRef.afterClosed().subscribe(result => {
-      //   if(result !== undefined) {
-      //     console.log(result);
-      //     if (this.dataSource.map(p=> p.id).includes(result.id)) {
-      //     this.dataSource.push(result);
-      //     this.table.renderRows();
-      //   } else {
-      //     this.alunoElementService.createAlunos(result)
-      //       .subscribe((data: AlunoElement) => {
-      //         this.dataSource.push(result);
-      //         this.table.renderRows();
-      //       });
-      //     }
-      //   }
-      // });
       dialogRef.afterClosed().subscribe(result => {
         this.alunoElementService.createAlunos(result)
           .subscribe((data:AlunoElement) => {

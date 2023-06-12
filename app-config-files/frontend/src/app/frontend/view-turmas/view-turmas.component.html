@@ -54,7 +54,7 @@
     </mat-panel-description>
 
   </mat-expansion-panel-header>
-
+  <h2>Lançar falta no mesmo dia da aula!!</h2>
     <mat-form-field class="campoTurma">
       <mat-label>Turma</mat-label>
       <mat-select #turmaSelect (selectionChange)="getAlunosFilter(turmaSelect.value, materiaSelect.value)">
@@ -75,6 +75,7 @@
 
     <br>
     <!-- Tabela de nomes para ministrar faltas -->
+
     <table mat-table color="primary" *ngIf="showButton" [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Coluna de nome  -->
     <ng-container matColumnDef="nome_aluno">
@@ -88,20 +89,55 @@
       </ng-container>
       <!-- Coluna de ações (falta) -->
       <ng-container matColumnDef="falta">
-        <th mat-header-cell *matHeaderCellDef> Falta </th>
+        <th  mat-header-cell *matHeaderCellDef> Falta </th>
         <td mat-cell *matCellDef="let element">
-          <form class="form" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
-          <mat-slide-toggle ngModel name="presence">Faltou?</mat-slide-toggle>
-        </form>
+          <mat-slide-toggle [(ngModel)]="element.presence" (change)="togglePresence(element)">Lançar falta</mat-slide-toggle>
         </td>
       </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <br>
-    <button mat-raised-button type="submit" *ngIf="showButton" (click)="getAlunosFilter" class="confirmButton">
+    <button mat-raised-button *ngIf="showButton" class="confirmButton">
       Confirmar
   </button>
+  </mat-expansion-panel>
+
+  <!-- Painel de relatório de faltas -->
+  <mat-expansion-panel (click)="getPresenca('null', 'null','null')">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Relatório de faltas
+      </mat-panel-title>
+      <mat-panel-description>
+        Visualizar faltas e excluir caso necessário
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table mat-table [dataSource]="dataSourcePresenca">
+      <ng-container matColumnDef="nome_falta">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let item"> {{item.student.nome_aluno}} </td>
+      </ng-container>
+      <ng-container matColumnDef="tia_falta">
+        <th mat-header-cell *matHeaderCellDef> TIA </th>
+        <td mat-cell *matCellDef="let item"> {{item.student.student_details.tia}} </td>
+      </ng-container>
+      <ng-container matColumnDef="data_falta">
+        <th mat-header-cell *matHeaderCellDef> Data da falta </th>
+        <td mat-cell *matCellDef="let item"> {{item.data}} </td>
+      </ng-container>
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef> Deletar </th>
+        <td mat-cell *matCellDef="let item">
+          <button mat-icon-button color="primary" (click)="deletePresenca(item.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+    
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="colunasMostradas"></tr>
+      <tr mat-row *matRowDef="let row; columns: colunasMostradas;"></tr>
+    </table>
   </mat-expansion-panel>
 
 </mat-accordion>
