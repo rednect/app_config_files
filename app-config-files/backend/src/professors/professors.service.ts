@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Professor } from './entities/professor.entity';
-import { CreateProfessor } from './dto/professor.dto';
+import { CreateProfessor, UpdateProfessor } from './dto/professor.dto';
 import { ClassEntity } from 'src/classes/entities/class.entity';
 
 @Injectable()
@@ -64,6 +64,32 @@ export class ProfessorsService {
       error: "Not acceptable"
     }, HttpStatus.NOT_ACCEPTABLE);
   }
+
+  async update(id: number, body: UpdateProfessor): Promise<Professor> {  
+    let professor = await this.professorRepository.findOne({where: {id: id}});
+    if (!professor) {
+      throw new HttpException({
+        msg: 'Professor not found',
+        error: 'Not Found'
+      }, HttpStatus.NOT_FOUND);
+    }
+    let updatedProfessor = { ...professor, ...body };
+    let updatedClasses = await this.classesRepository.find({
+      where: {
+        course_name: updatedProfessor.course_name
+      }
+    });
+    
+    if (!updatedClasses) {
+      throw new HttpException({
+        msg: 'Classes not found',
+        error: 'Not Found'
+      }, HttpStatus.NOT_FOUND);
+    }
+    updatedProfessor.classes = updatedClasses;
+    await this.professorRepository.save(updatedProfessor);
+    return updatedProfessor;
+  }  
 
   async delete(id: number) {
     let professor = await this.professorRepository.findOne({where: {id: id}, relations: ['classes']});

@@ -4,6 +4,13 @@ interface CreateProfessor {
   tia: string;
 }
 
+interface UpdateProfessor {
+  id: number;
+  nomeProfessor: string;
+  tia: string;
+}
+
 export {
-  CreateProfessor
+  CreateProfessor,
+  UpdateProfessor
 }

@@ -1,6 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ProfessorsService } from './professors.service';
-import { CreateProfessor } from './dto/professor.dto';
+import { CreateProfessor, UpdateProfessor } from './dto/professor.dto';
 
 @Controller('professors')
 export class ProfessorsController {
@@ -14,6 +14,11 @@ export class ProfessorsController {
   @Post('create')
   create(@Body() body: CreateProfessor) {
     return this.professorsService.create(body);
+  }
+
+  @Put('update/:id')
+  async updateProfessor(@Param('id') id: number, @Body() body: UpdateProfessor) {
+    return this.professorsService.update(id, body);
   }
 
   @Delete(':id')
