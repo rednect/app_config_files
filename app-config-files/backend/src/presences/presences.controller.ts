@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { PresencesService } from './presences.service';
 
 @Controller('presences')
@@ -14,4 +14,10 @@ export class PresencesController {
   create(@Body() body: any) {
     return this.presencesService.create(body);
   }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.presencesService.delete(+id);
+  }
+
 }

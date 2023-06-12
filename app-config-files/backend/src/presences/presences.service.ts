@@ -48,4 +48,16 @@ export class PresencesService {
       return await this.presenceRepository.save(newPresence);
     }
   }
+
+  async delete(id: number) {
+    let presence = await this.presenceRepository.findOne({where: {id: id}});
+    if (!presence) {
+      throw new HttpException({
+        msg: 'Student not found',
+        error: 'Not Found'
+      }, HttpStatus.NOT_FOUND);
+    } 
+    await this.presenceRepository.delete(id)
+  }
+
 }
