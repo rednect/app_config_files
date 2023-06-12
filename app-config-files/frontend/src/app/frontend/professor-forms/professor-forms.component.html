@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Criar Professor</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome completo</mat-label>
+    <input matInput [(ngModel)]="data.nome_professor">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Código de matrícula</mat-label>
+    <input matInput [(ngModel)]="data.tia">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Aula a lecionar</mat-label>
+    <input matInput [(ngModel)]="data.schedule">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Concluir</button>
+
+</div>

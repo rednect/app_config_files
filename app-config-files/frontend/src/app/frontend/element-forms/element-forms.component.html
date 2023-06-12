@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Criar Aluno</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome completo</mat-label>
+    <input matInput [(ngModel)]="data.nome_aluno">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Código de matrícula</mat-label>
+    <input matInput [(ngModel)]="data.tia">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Turma</mat-label>
+    <mat-select [(ngModel)]="data.turma">
+      <mat-option value="5J">5J</mat-option>
+      <mat-option value="4J">4J</mat-option>
+      <mat-option value="3F">3F</mat-option>
+      <mat-option value=54>54</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Concluir</button>
+
+</div>

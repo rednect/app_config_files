@@ -11,7 +11,7 @@
 - [Descrição dos casos de uso](#descrição-dos-casos-de-uso)
 - [Protótipos de tela](#protótipos-de-tela)
 - [Modelo de domínio](#modelo-de-domínio)
-- [Decisões de arquitetura](#decisões-de-arquitetura)
+- [Defiinições de arquitetura](#decisões-de-arquitetura)
 - [Diagrama de implantação](#diagrama-de-implantação)
 - [Referências](#referências)
 

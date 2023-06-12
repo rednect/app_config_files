@@ -1,0 +1,85 @@
+<!-- menu rápido lateral -->
+<mat-drawer-container class="telainteira" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <h2>Menu rápido</h2>
+  
+    <button class="botaomenu" routerLink="/menu" mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>Voltar ao menu</h3>
+  
+    <button  routerLink="/gerenciar" mat-icon-button>
+      <mat-icon class="grade-icon">grade</mat-icon>
+    </button>
+    <h3>Gerenciar turma</h3>
+  
+    <button class="revisao-professores" routerLink="/professor" mat-icon-button>
+      <mat-icon>person_pin</mat-icon>
+    </button>
+    <h3>Gerenciar professores</h3>  
+  
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <button type="button" mat-icon-button color="primary" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  
+<div class="example-action-buttons">
+
+</div>
+<!-- Conteúdo da página -->
+<mat-accordion class="example-headers-align" multi>
+
+<!-- Painel de Turmas -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Criar turmas
+    </mat-panel-title>
+    <mat-panel-description>Criar e gerenciar turmas</mat-panel-description>
+  </mat-expansion-panel-header>
+
+<button mat-button (click)="openDialog()">Criar nova turma</button>
+</mat-expansion-panel>
+
+<!-- Painel de faltas -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Informações da aula
+    </mat-panel-title>
+    <mat-panel-description>
+      Informe a data da aula, a turma e a matéria.
+    </mat-panel-description>
+
+  </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+    </mat-form-field>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field class="campoTurma">
+      <mat-label>Turma</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let turma of turmas" [value]="turma.value">
+          {{turma.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="campoMateria">
+      <mat-label>Matéria</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let materia of materias" [value]="materia.value">
+          {{materia.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button class="confirmButton">
+      Confirmar
+  </button>
+  </mat-expansion-panel>
+
+</mat-accordion>
