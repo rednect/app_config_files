@@ -71,7 +71,35 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button (click)="getAlunosFilter" class="confirmButton">
+
+
+    <br>
+    <!-- Tabela de nomes para ministrar faltas -->
+    <table mat-table color="primary" *ngIf="showButton" [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Coluna de nome  -->
+    <ng-container matColumnDef="nome_aluno">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome_aluno}} </td>
+    </ng-container>
+      <!-- Coluna de TIA  -->
+      <ng-container matColumnDef="tia">
+        <th mat-header-cell *matHeaderCellDef> TIA </th>
+        <td mat-cell *matCellDef="let element"> {{element.tia}} </td>
+      </ng-container>
+      <!-- Coluna de ações (falta) -->
+      <ng-container matColumnDef="falta">
+        <th mat-header-cell *matHeaderCellDef> Falta </th>
+        <td mat-cell *matCellDef="let element">
+          <form class="form" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
+          <mat-slide-toggle ngModel name="presence">Faltou?</mat-slide-toggle>
+        </form>
+        </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <br>
+    <button mat-raised-button type="submit" *ngIf="showButton" (click)="getAlunosFilter" class="confirmButton">
       Confirmar
   </button>
   </mat-expansion-panel>

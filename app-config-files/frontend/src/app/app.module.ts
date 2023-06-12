@@ -30,6 +30,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProfessorFormsComponent } from './frontend/professor-forms/professor-forms.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 
@@ -67,7 +69,8 @@ import { TurmasFormsComponent } from './frontend/turmas-forms/turmas-forms.compo
     MatNativeDateModule,
     MatCardModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   providers: [
   ],

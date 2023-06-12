@@ -1,4 +1,5 @@
 import { Component, Inject, NgModule, ViewChild } from '@angular/core';
+import {FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { TurmasFormsComponent } from '../turmas-forms/turmas-forms.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,11 +26,18 @@ interface turmas {
 })
 export class ViewTurmasComponent {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
+  isChecked = true;
+  formGroup = this.formBuilder.group({
+    presence: ''
+  })
+  displayedColumns: string[] = ['nome_aluno', 'tia', 'falta'];
+  showButton: boolean = false
   dataSource: TurmaElement[] = [];
   turmas: any[] = [];
   materias: any[] = [];
 
   constructor(
+    public formBuilder: FormBuilder,
     private dialog: MatDialog,
     public alunoElementService: AlunoElementService,
     public turmaElementService : TurmaElementService,
@@ -45,15 +53,25 @@ export class ViewTurmasComponent {
   
 ngOnInit(): void {
 }
-
 getAlunosFilter(turma: string, materia: string) {
   this.alunoElementService.getAlunos().subscribe(
     (alunos: any[]) => {
       console.log(alunos)
       const alunosFiltrados = alunos.filter(aluno => aluno.sala_aluno === turma && aluno.curso_aluno === materia);
-      console.log(alunosFiltrados);
+      // console.log(alunosFiltrados);
+      this.dataSource = alunosFiltrados;
+      console.log(this.dataSource)
+      this.showButton = this.dataSource.length > 0;
     }
   );
+}
+
+getAlunosList(alunosFiltrados: any){
+  this.alunoElementService.getAlunos()
+}
+
+alertFormValues(formGroup: FormGroup){
+  alert(JSON.stringify(formGroup.value, null, 2));
 }
 
 openDialog(element: TurmaElement| null): void {

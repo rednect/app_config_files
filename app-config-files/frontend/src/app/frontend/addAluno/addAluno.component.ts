@@ -41,7 +41,7 @@ export class addAlunoComponent {
           curso_aluno: ''
         } : {
           id: element.id,
-          nome: element.nome_aluno,
+          nome_aluno: element.nome_aluno,
           tia: element.tia,
           sala_aluno: element.sala_aluno,
           curso_aluno: element.curso_aluno
