@@ -13,7 +13,7 @@ import { PresencaElement } from 'src/app/backend/model/presencaElement';
 export interface PresenceSourceData {
   nome_aluno: string;
   tia: string;
-  data: string;
+  data: Date;
 }
 
 interface materias {
@@ -101,7 +101,7 @@ togglePresence(element: TurmaElement) {
   let response = {
     idAluno: element.id,
     presenca: !element.presence,
-    data: new Date().toLocaleDateString('en-US')
+    data: new Date()
     }
   
   console.log(response)
