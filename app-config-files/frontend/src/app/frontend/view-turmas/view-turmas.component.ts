@@ -105,7 +105,6 @@ togglePresence(element: TurmaElement) {
     }
   
   console.log(response)
-  window.location.reload();
   this.presenceElementService.createPresences(response)
     .subscribe((data:PresencaElement) => {
     console.log(data);
