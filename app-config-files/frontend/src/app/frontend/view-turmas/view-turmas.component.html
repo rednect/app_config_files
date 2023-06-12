@@ -98,7 +98,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <br>
-    <button mat-raised-button *ngIf="showButton" class="confirmButton">
+    <button mat-raised-button (click)='reloadPage() '*ngIf="showButton" class="confirmButton">
       Confirmar
   </button>
   </mat-expansion-panel>

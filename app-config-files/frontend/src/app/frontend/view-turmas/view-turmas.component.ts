@@ -63,6 +63,9 @@ export class ViewTurmasComponent {
   
 ngOnInit(): void{
 }
+reloadPage(){
+  window.location.reload();
+}
 
 getPresenca(nomealuno: string, tia: string, data: string){
 
