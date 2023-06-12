@@ -6,6 +6,7 @@ import { CreateStudent, StudentReturn } from './dto/student.dto';
 import { StudentDetails } from './entities/student_details.entity';
 import { ClassEntity } from 'src/classes/entities/class.entity';
 import { Presence } from 'src/presences/entities/presence.entity';
+import { measureMemory } from 'vm';
 
 @Injectable()
 export class StudentsService {
@@ -83,4 +84,51 @@ export class StudentsService {
     }, HttpStatus.NOT_FOUND);
   }
 
+  async update(id: number, updates: Partial<CreateStudent>): Promise<StudentReturn> {
+    let student = await this.studentsRepository.findOne({where: {id: id}, relations: ['student_details', 'classes', 'presences']});
+    if (!student) {
+      throw new HttpException({
+        msg: 'Student not found',
+        error: 'Not Found'
+      }, HttpStatus.NOT_FOUND);
+    }  
+
+    let updatedStudentDetails = Object.assign(student.student_details, updates);
+    await this.studentsDetailsRepository.save(updatedStudentDetails);
+    if (updates.sala_aluno) {
+      const classes = await this.classesRepository.findOne({
+        where: {
+          class_name: updates.sala_aluno
+        }
+      });
+      if (!classes) {
+        throw new HttpException({
+          msg: 'Class not found',
+          error: 'Not Found'
+        }, HttpStatus.NOT_FOUND);
+      }
+      student.class = classes;
+    }
+  
+    let updatedStudent = Object.assign(student, { student_details: updatedStudentDetails }, updates);
+    await this.studentsRepository.save(updatedStudent);
+    return updatedStudent;
+  }
+
+  async deleteStudent(id: number) {
+    let student = await this.studentsRepository.findOne({where: {id: id}, relations: ['student_details', 'class', 'presences']});
+
+    if (!student) {
+      throw new HttpException({
+        msg: 'Student not found',
+        error: 'Not Found'
+      }, HttpStatus.NOT_FOUND);
+    } 
+    await this.presenceRepository.delete(id)
+    await this.studentsRepository.delete(id);
+    await this.studentsDetailsRepository.delete(id);
+  }
+  
 }
+
+

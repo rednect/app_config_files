@@ -65,4 +65,15 @@ export class ProfessorsService {
     }, HttpStatus.NOT_ACCEPTABLE);
   }
 
+  async delete(id: number) {
+    let professor = await this.professorRepository.findOne({where: {id: id}, relations: ['classes']});
+    if (!professor) {
+      throw new HttpException({
+        msg: 'Professor not found',
+        error: 'Not Found'
+      }, HttpStatus.NOT_FOUND);
+    } 
+    await this.professorRepository.delete(id)
+  }
+
 }
