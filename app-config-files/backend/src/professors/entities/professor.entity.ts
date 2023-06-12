@@ -25,11 +25,6 @@ export class Professor {
   @Column()
   course_name: string;
 
-  @OneToMany(() => Presence, presence => presence.professor, {
-    cascade: ['insert', 'update']
-  })
-  presences?: Presence[];
-
   @ManyToMany(() => ClassEntity, (classes) => classes.professors)
   @JoinTable()
   classes?: ClassEntity[];

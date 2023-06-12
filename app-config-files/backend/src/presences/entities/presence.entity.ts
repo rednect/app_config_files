@@ -16,16 +16,10 @@ export class Presence {
   idAluno: number;
 
   @Column()
-  numero_da_aula: number;
+  data: Date;
 
-  @Column({ type: 'bool', default: 0 })
+  @Column({ type: 'bool', default: true })
   presenca: boolean;
-
-  @ManyToOne(() => Professor, (professor) => professor.presences, {
-    cascade: true,
-    onDelete: "SET NULL"
-  })
-  professor: Professor
 
   @ManyToOne(() => Student, (student) => student.presences, {
     cascade: true,
