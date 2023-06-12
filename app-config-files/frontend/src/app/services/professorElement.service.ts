@@ -22,7 +22,7 @@ export class ProfessorElementService {
     }
 
     deleteProfessores(id: number): Observable<any> {
-        return this.http.delete<any>(`${this.elementApiUrl}/${id}`);
+        return this.http.delete<any>(`${this.elementApiUrl}/professors/${id}`);
     }
 
 }
