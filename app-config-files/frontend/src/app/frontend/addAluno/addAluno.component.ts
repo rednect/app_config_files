@@ -14,7 +14,7 @@ import { AlunoElementService } from 'src/app/services/alunoElement.service';
 export class addAlunoComponent {
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['nome_aluno', 'tia', 'turma', 'acoes'];
+  displayedColumns: string[] = ['nome_aluno', 'tia', 'turma', 'curso', 'acoes'];
   dataSource: AlunoElement[] = [];
 
   constructor(
@@ -33,36 +33,22 @@ export class addAlunoComponent {
 
     openDialog(element: AlunoElement| null): void {
       const dialogRef = this.dialog.open(ElementFormsComponent, {
-        width: '250px',
+        width: '260px',
         data: element === null ?{
           nome_aluno: '',
           tia: '',
-          turma: null
+          sala_aluno: null,
+          curso_aluno: ''
         } : {
           id: element.id,
-          nome: element.nome_aluno,
+          nome_aluno: element.nome_aluno,
           tia: element.tia,
-          turma: null
-          // turma: element.turma
+          sala_aluno: element.sala_aluno,
+          curso_aluno: element.curso_aluno
         }
       });
     
   
-      // dialogRef.afterClosed().subscribe(result => {
-      //   if(result !== undefined) {
-      //     console.log(result);
-      //     if (this.dataSource.map(p=> p.id).includes(result.id)) {
-      //     this.dataSource.push(result);
-      //     this.table.renderRows();
-      //   } else {
-      //     this.alunoElementService.createAlunos(result)
-      //       .subscribe((data: AlunoElement) => {
-      //         this.dataSource.push(result);
-      //         this.table.renderRows();
-      //       });
-      //     }
-      //   }
-      // });
       dialogRef.afterClosed().subscribe(result => {
         this.alunoElementService.createAlunos(result)
           .subscribe((data:AlunoElement) => {

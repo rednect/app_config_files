@@ -1,19 +1,36 @@
-import { Schedule } from "src/presences/entities/schedule.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { ClassEntity } from "src/classes/entities/class.entity";
+import { Presence } from "src/presences/entities/presence.entity";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
+  ManyToMany,
+  JoinTable
+} from "typeorm";
 
-@Entity("Professores")
+@Entity()
 export class Professor {
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  nome_professor: string;
+  nomeProfessor: string;
 
   @Column()
   tia: string;
 
-  @OneToMany(()=> Schedule, relacao => relacao.professors, {cascade: [ 'insert', 'update' ]})
-  aulas: Schedule []
+  @Column()
+  course_name: string;
 
+  @ManyToMany(() => ClassEntity, (classes) => classes.professors)
+  @JoinTable()
+  classes?: ClassEntity[];
+  // @ManyToOne(() => ClassEntity, (classes) => classes.professors, {
+  //   cascade: true, 
+  //   onDelete: "SET NULL"
+  // })
+  // class: ClassEntity;
 }

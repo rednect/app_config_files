@@ -1,7 +1,17 @@
-import { Turma } from "src/presences/entities/turmas.entity";
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+  OneToMany,
+  ManyToOne
+} from "typeorm";
+import { StudentDetails } from "./student_details.entity";
+import { Presence } from "src/presences/entities/presence.entity";
+import { ClassEntity } from "src/classes/entities/class.entity";
 
-@Entity('Alunos')
+@Entity()
 export class Student {
 
   @PrimaryGeneratedColumn()
@@ -10,10 +20,19 @@ export class Student {
   @Column()
   nome_aluno: string;
 
-  @Column()
-  tia: string;
+  @OneToMany(() => Presence, presence => presence.student,{
+    cascade: ['insert', 'update']
+  })
+  presences: Presence[];
+  
+  @ManyToOne(() => ClassEntity, (classes) => classes.student, {
+    cascade: true, 
+    onDelete: "SET NULL"
+  })
+  class: ClassEntity
 
-  @ManyToOne(() => Turma, turma => turma.alunos, {cascade: true, onDelete: 'CASCADE'})
-  turmas: Turma 
+  @OneToOne(() => StudentDetails)
+  @JoinColumn()
+  student_details: StudentDetails;
 
 }

@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddProfessoresComponent {
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['nome_professor', 'tia', 'schedule', 'acoes'];
+  displayedColumns: string[] = ['nome_professor', 'tia', 'curso', 'acoes'];
   dataSource: ProfessorElement[] = [];
 
   constructor(
@@ -33,26 +33,18 @@ export class AddProfessoresComponent {
     ngOnInit(): void {
     }
 
-  // reloadDelay(delay:number){
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, delay);
-  // }
-
   openDialog(element: ProfessorElement| null): void {
     const dialogRef = this.dialog.open(ProfessorFormsComponent, {
       width: '250px',
       data: element === null ?{
-        nome_professor: '',
-        sobrenome_professor:'',
+        nomeProfessor: '',
         tia: '',
-        schedule: ''
+        course_name: ''
       } : {
         id: element.id,
-        nome: element.nome_professor,
-        sobrenome: element.sobrenome_professor,
+        nome: element.nomeProfessor,
         tia: element.tia,
-        schedule: element.schedule
+        course_name: element.course_name
         // turma: element.turma
       }
     });

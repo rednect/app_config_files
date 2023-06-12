@@ -1,16 +1,16 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
+import { PresencesService } from './presences.service';
 import { PresencesController } from './presences.controller';
-import { PresencesService } from './preseces.service';
-import { Presences } from './entities/presences.entity';
-import { Schedule } from './entities/schedule.entity';
-import { Turma } from './entities/turmas.entity';
+import { Presence } from './entities/presence.entity';
+import { Student } from 'src/students/entities/student.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Presences, Schedule, Turma])],
+  imports: [TypeOrmModule.forFeature([
+    Presence,
+    Student
+  ])],
   controllers: [PresencesController],
-  providers: [PresencesService],
-  exports: [PresencesService]
+  providers: [PresencesService]
 })
-
-export class PresencesModule {}
+export class PresencesModule { }

@@ -6,15 +6,15 @@ import { ProfessorElement } from "../backend/model/professorElement";
 
 @Injectable()
 export class ProfessorElementService {
-    elementApiUrl = 'http://localhost:3000/professors';
+    elementApiUrl = 'http://localhost:3000';
     constructor(private http: HttpClient) { }
 
     getProfessores(): Observable<ProfessorElement[]> {
-        return this.http.get<ProfessorElement[]>(`${this.elementApiUrl}`);
+        return this.http.get<ProfessorElement[]>(`${this.elementApiUrl}/professors`);
     }
 
     createProfessores(Professores:ProfessorElement): Observable<ProfessorElement>{
-        return this.http.post<ProfessorElement>(this.elementApiUrl, Professores);
+        return this.http.post<ProfessorElement>(`${this.elementApiUrl}/professors/create`, Professores);
     }
 
     editProfessores(id: number, Alunos: ProfessorElement): Observable<ProfessorElement>{

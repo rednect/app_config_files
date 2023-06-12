@@ -1,24 +1,21 @@
-import { BeforeInsert, Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-import * as bcrypt from "bcrypt";
-  
-  @Entity("Administradores")
-  export class User {
-  
-    @PrimaryGeneratedColumn()
-    id: number;
-  
-    @Column()
-    email: string;
-  
-    @Column({select: false})
-    senha: string;
-  
-    @Column({select: false})
-    confSenha: string;
+import { 
+  Entity,
+  Column,
+  PrimaryGeneratedColumn
+} from "typeorm";
 
-    @BeforeInsert()
-    async hashPassword() {
-      this.senha = await bcrypt.hash(this.senha, 16)
-      this.confSenha = await bcrypt.hash(this.confSenha, 16)
-    }
-  }
+@Entity()
+export class Users {
+
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  numero_usuario: string;
+
+  @Column({select: false})
+  senha: string;
+
+  @Column({type: 'bool', default: 0})
+  estado_login: boolean;
+}
